@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>@ViewData["Title"] - rent.ukraine</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size:1.4em;">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+            <img style="height:90px" src="~/images/logotype.png" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Головна<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Прокат речей</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Оренда нерухомості</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Оренда автомобілів</a>
+                </li>
+            </ul>
+            <button style="font-size:1em;margin:10px;color:#3e2622;border-color:#3e2622" id="addbtn" class="btn btn-outline-success my-2 my-sm-0">+ Подати оголошення</button>
+            <div class="dropdown">
+                <img class="dropbtn" style="margin:10px;height:40px;width:40px" src="~/images/img_165522.png"
+                     onmouseover="this.src='/images/img_165522invert.png'"
+                     onmouseout="this.src='/images/img_165522.png'" />
+                <div class="dropdown-content">
+                    <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Вхід</a>
+                    <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Реєстрація</a>
+                </div>
+            </div>
+            <div class="dropdown">
+            <img class="dropbtn" style="margin:10px;height:40px;" src="~/images/img_412122.png"
+                 onmouseover="this.src='/images/img_412122invert.png'"
+                 onmouseout="this.src='/images/img_412122.png'" />
+                <div class="dropdown-content">
+                    <a href="#">Русский</a>
+                    <a href="#">English</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    @*<partial name="_CookieConsentPartial" />*@
+
+    <footer class="page-footer bg-light" style="font-size:1.4em;padding-top:40px;padding-bottom:20px">
+        @RenderBody()
+        <div class="d-flex flex-sm-column flex-lg-row justify-content-around">
+            <ul>
+                <li>
+                    <a class="flink" href="#">Головна</a>
+                </li>
+                <li>
+                    <a class="flink" href="#">Прокат речей</a>
+                </li>
+                <li>
+                    <a class="flink" href="#">Оренда нерухомості</a>
+                </li>
+                <li>
+                    <a class="flink" href="#">Оренда автомобілів</a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a class="flink" href="#">Blog</a>
+                </li>
+                <li>
+                    <a class="flink" href="#">FAQ</a>
+                </li>
+                <li>
+                    <a class="flink" href="#">Політика конфіденційності</a>
+                </li>
+            </ul>
+        </div>
+        <div class="container body-content" style="display:flex;justify-content:center">
+            <a href="https://www.instagram.com/rent.ukraine/"><img style="margin:5px" class="icon" src="~/images/insta.png"></a>
+            <img style="margin:5px" class="icon" src="~/images/yt.png">
+            <img style="margin:5px" class="icon" src="~/images/fb.png">
+        </div>
+        <hr>
+        <p style="text-align:center">&copy; 2020 - rent.ukraine</p>
+        <p style="text-align:center">Усі права захищено</p>
+        </table>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+
+
+</body>
+</html>
