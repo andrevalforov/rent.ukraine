@@ -5,9 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RentCourse.Data.EFContext;
+using RentCourse.Data.Interfaces;
+using RentCourse.Data.Repository;
 
 namespace RentCourse
 {
@@ -30,6 +35,17 @@ namespace RentCourse
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDbContext<EFDbContext>(options =>
+            options.UseSqlServer(
+                Configuration.GetConnectionString("MainConnection")));
+
+            services.AddIdentity<DbUser, DbRole>(options => options.Stores.MaxLengthForKeys = 128)
+                .AddEntityFrameworkStores<EFDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddTransient<IProducts, ProductRepository>();
+            services.AddTransient<ICategories, CategoryRepository>();
+            services.AddTransient<ITypes, TypeRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -54,6 +70,10 @@ namespace RentCourse
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "categoryfilter",
+                    template: "Product/{action}/{category?}",
+                    defaults: new { Controller = "Producy", Action = "ListProducts" });
             });
         }
     }

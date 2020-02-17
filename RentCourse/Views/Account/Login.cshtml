@@ -3,24 +3,24 @@
 <h2>Вхід в обліковий запис</h2>
 
 
-<form asp-action="Login" asp-controller="Account" asp-anti-forgery="true">
+<form method="post" asp-action="Login" asp-controller="Account" asp-anti-forgery="true" style="margin-left:100px;margin-right:100px">
     <div class="validation" asp-validation-summary="ModelOnly" />
     <div>
-        <div class="form-group">
+        <div>
             <label asp-for="Email">Email</label>
-            <input type="text" asp-for="Email" />
+            <input type="text" class="form-control" asp-for="Email" />
             <span asp-validation-for="Email" />
         </div>
-        <div class="form-group">
+        <div>
             <label asp-for="Password">Пароль</label>
-            <input asp-for="Password" />
+            <input class="form-control" asp-for="Password" />
             <span asp-validation-for="Password" />
         </div>
         <div class="form-group">
-            <input type="submit" value="Увійти" class="btn btn-outline-dark" />
+            <input style="margin:5px;font-size:21px" type="submit" value="Увійти" class="btn btn-primary" />
         </div>
     </div>
-</form>
-
 <a asp-action="RestorePassword" asp-controller="Account">Забули пароль?</a>
 <a asp-action="Register" asp-controller="Account">Немає облікового запису?</a>
+</form>
+

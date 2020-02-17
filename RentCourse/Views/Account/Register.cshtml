@@ -2,7 +2,7 @@
 
 
 <h2>Реєстрація нового користувача</h2>
-<form method="post" asp-controller="Account" asp-action="Register">
+<form method="post" asp-controller="Account" asp-action="Register" style="margin-left:100px;margin-right:100px">
     <div asp-validation-summary="ModelOnly"></div>
     <div>
         <label asp-for="LastName"></label><br />
@@ -40,6 +40,6 @@
         <span asp-validation-for="PasswordConfirm"></span>
     </div>
     <div>
-        <input style="margin:5px;font-size:21px" type="submit" class="btn btn-primary" value="Sign Up" />
+        <input style="margin:5px;font-size:21px" type="submit" class="btn btn-primary" value="Зареєструватися" />
     </div>
 </form>
