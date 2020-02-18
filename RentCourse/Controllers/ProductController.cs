@@ -25,7 +25,7 @@ namespace RentCourse.Controllers
         [Authorize(Roles = "User")]
         [Route("Product/ListProducts")]
         [Route("Product/ListProducts/{category}")]
-        public ViewResult ListCars(string category)
+        public ViewResult ListProducts(string category)
         {
             IEnumerable<Product> products = null;
             string productCategory = "";
@@ -37,23 +37,7 @@ namespace RentCourse.Controllers
             {
                 products = _products.GetAllProducts
                     .Where(x => x.Category.Name.ToLower() == category.ToLower());
-
-                //if (string.Equals("Benzine", category, StringComparison.OrdinalIgnoreCase))
-                //{
-                //    cars = _cars.GetCars.Where(x => x.Category.Name.Equals("Benzine"))
-                //        .OrderBy(i => i.Id);
-                //}
-                //else if (string.Equals("Diesel", category, StringComparison.OrdinalIgnoreCase))
-                //{
-                //    cars = _cars.GetCars.Where(x => x.Category.Name.Equals("Diesel"))
-                //        .OrderBy(i => i.Id);
-                //}
-                //else
-                //{
-                //    cars = _cars.GetCars.Where(x => x.Category.Name.Equals("Electricity"))
-                //        .OrderBy(i => i.Id);
-                //}
-
+                
                 productCategory = category;
             }
 
@@ -66,14 +50,6 @@ namespace RentCourse.Controllers
             ViewBag.Title = "All Products";
             return View(productObj);
 
-            //ViewBag.Cars = "allCars";
-            //CarsListViewModel obj = new CarsListViewModel();
-            //obj.GetCars = _cars.GetCars;
-            //obj.CarCategory = "auto";
-
-            //return View(obj);
-            //var cars = _cars.GetCars;
-            //return View(cars);
         }
     }
 }

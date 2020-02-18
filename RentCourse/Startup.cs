@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -43,6 +44,13 @@ namespace RentCourse
                 .AddEntityFrameworkStores<EFDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                    options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                });
+
             services.AddTransient<IProducts, ProductRepository>();
             services.AddTransient<ICategories, CategoryRepository>();
             services.AddTransient<ITypes, TypeRepository>();
@@ -53,6 +61,7 @@ namespace RentCourse
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseAuthentication();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -65,6 +74,8 @@ namespace RentCourse
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            SeederDb.SeedData(app.ApplicationServices, env, this.Configuration);
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -73,7 +84,7 @@ namespace RentCourse
                 routes.MapRoute(
                     name: "categoryfilter",
                     template: "Product/{action}/{category?}",
-                    defaults: new { Controller = "Producy", Action = "ListProducts" });
+                    defaults: new { Controller = "Product", Action = "ListProducts" });
             });
         }
     }

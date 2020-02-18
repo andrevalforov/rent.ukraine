@@ -75,14 +75,14 @@ namespace RentCourse.Controllers
             var roleName = "User";
 
             ////////////  Один раз
-            //var result = _roleManager.CreateAsync(new DbRole
+            //var resul = _roleManager.CreateAsync(new DbRole
             //{
             //    Name = roleName
             //}).Result;
 
             //roleName = "Admin";
 
-            //result = _roleManager.CreateAsync(new DbRole
+            //resul = _roleManager.CreateAsync(new DbRole
             //{
             //    Name = roleName
             //}).Result;

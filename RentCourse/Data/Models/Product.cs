@@ -10,7 +10,7 @@ namespace RentCourse.Data.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public IEnumerable<string> Images { get; set; }
+        //public IEnumerable<string> Images { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
         public bool Available { get; set; }
