@@ -1,20 +1,20 @@
-﻿<nav class="navbar navbar-expand-lg navbar-light bg-light">
+﻿<div class="sidebar left ">
     <form>
         <input class="form-control mr-sm-2" type="search" placeholder="Пошук" aria-label="Search">
-        <select class="LocationSelect">
+        <label>Фільтри</label>
+        <select class="selectpicker">
             <option disabled>Місцезнаходження</option>
-
         </select>
-        <select class="CategorySelect">
+        <select class="selectpicker">
             <option disabled>Категорія</option>
-            @foreach(var category in Model)
+            @foreach (var category in Model)
             {
                 <option>@category.CategotyName</option>
             }
         </select>
         <input class="form-control mr-sm-2" type="text" placeholder="Мінімальна ціна" aria-label="MinPrice">
         <input class="form-control mr-sm-2" type="text" placeholder="Максимальна ціна" aria-label="MaxPrice">
-        <select>
+        <select class="selectpicker">
             <option disabled>Сортувати за...</option>
             <option value="Найновіші">Найновіші</option>
             <option value="мін->макс">Ціна (мін->макс)</option>
@@ -22,4 +22,4 @@
         </select>
         <button type="submit"></button>
     </form>
-</nav>
+</div>

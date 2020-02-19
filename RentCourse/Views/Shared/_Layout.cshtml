@@ -54,7 +54,17 @@
 
     @*<partial name="_CookieConsentPartial" />*@
 
-        @RenderBody()
+    <div class="d-flex justify-content-between">
+
+        @await Component.InvokeAsync("Category");
+
+        <div class="container">
+            <main role="main">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
     <div class="container body-content">
         <hr />
         <footer class="page-footer bg-light" style="font-size:1.1em;padding-top:40px;padding-bottom:20px;width:100%;color: #3e2622;">

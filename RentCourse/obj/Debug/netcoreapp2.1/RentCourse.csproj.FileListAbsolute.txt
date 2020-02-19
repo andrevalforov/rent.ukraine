@@ -101,4 +101,5 @@ C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Re
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.dll
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.pdb
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.csproj.CopyComplete
-C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Shared\SearchBar.g.cshtml.cs
+C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.csprojAssemblyReference.cache
+C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\Category\Default.g.cshtml.cs
