@@ -61,7 +61,7 @@ using RentCourse.Models;
             WriteLiteral("<div style=\"margin-left:100px;margin-right:100px;background-color:white\">\r\n    ");
             EndContext();
             BeginContext(124, 63, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "363a05c8ed3440b29a389e95c6d6e618", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c044ba7c0dcc46f39d461c08a22a988d", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

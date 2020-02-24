@@ -2,24 +2,36 @@
     <form>
         <input class="form-control mr-sm-2" type="search" placeholder="Пошук" aria-label="Search">
         <label>Фільтри</label>
-        <select class="selectpicker">
-            <option disabled>Місцезнаходження</option>
-        </select>
-        <select class="selectpicker">
-            <option disabled>Категорія</option>
-            @foreach (var category in Model)
-            {
-                <option>@category.CategotyName</option>
-            }
-        </select>
-        <input class="form-control mr-sm-2" type="text" placeholder="Мінімальна ціна" aria-label="MinPrice">
-        <input class="form-control mr-sm-2" type="text" placeholder="Максимальна ціна" aria-label="MaxPrice">
-        <select class="selectpicker">
-            <option disabled>Сортувати за...</option>
-            <option value="Найновіші">Найновіші</option>
-            <option value="мін->макс">Ціна (мін->макс)</option>
-            <option value="макс->мін">Ціна (макс->мін)</option>
-        </select>
-        <button type="submit"></button>
+        <ul style="">
+            <li>
+                <select class="selectpicker">
+                    <option disabled>Місцезнаходження</option>
+                </select>
+            </li>
+            <li>
+                <select class="selectpicker">
+                    <option disabled>Категорія</option>
+                    @foreach (var category in Model)
+                    {
+                        <option>@category.CategotyName</option>
+                    }
+                </select>
+            </li>
+            <li>
+                <input class="form-control mr-sm-2" type="text" placeholder="Мінімальна ціна" aria-label="MinPrice">
+                <input class="form-control mr-sm-2" type="text" placeholder="Максимальна ціна" aria-label="MaxPrice">
+            </li>
+            <li>
+                <select class="selectpicker">
+                    <option disabled>Сортувати за...</option>
+                    <option value="Найновіші">Найновіші</option>
+                    <option value="мін->макс">Ціна (мін->макс)</option>
+                    <option value="макс->мін">Ціна (макс->мін)</option>
+                </select>
+            </li>
+            <li>
+                <button type="submit"></button>
+            </li>
+        </ul>
     </form>
 </div>
