@@ -95,7 +95,8 @@ namespace RentCourse.Controllers
                     MiddleName = model.MiddleName,
                     LastName = model.LastName,
                     PhoneNumber=model.PhoneNumber,
-                    RegistrationDate = DateTime.Now
+                    RegistrationDate = DateTime.Now,
+                    Email=model.Email
                 };
 
                 DbUser dbUser = new DbUser
