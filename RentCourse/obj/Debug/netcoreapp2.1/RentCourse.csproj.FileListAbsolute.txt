@@ -79,6 +79,7 @@ C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Re
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.TagHelpers.input.cache
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.TagHelpers.output.cache
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.RazorCoreGenerate.cache
+C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Account\ChangePassword.g.cshtml.cs
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.g.cshtml.cs
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Account\RestorePassword.g.cshtml.cs
@@ -89,6 +90,7 @@ C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Ra
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Home\MainRealEstate.g.cshtml.cs
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Home\MainThings.g.cshtml.cs
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
+C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\Category\Default.g.cshtml.cs
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
@@ -101,5 +103,3 @@ C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Re
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.dll
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.pdb
 C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.csproj.CopyComplete
-C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.csprojAssemblyReference.cache
-C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\Category\Default.g.cshtml.cs

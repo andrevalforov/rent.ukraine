@@ -58,12 +58,12 @@ using RentCourse.Models;
             WriteLiteral("<div class=\"sidebar right\" style=\"background-color:#3e2622\">\r\n    ");
             EndContext();
             BeginContext(66, 1443, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f7d1679001e24ad39936b16eb0fe3a61", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4eadeacb9c1443688501fa6bb692dbb1", async() => {
                 BeginContext(72, 242, true);
                 WriteLiteral("\r\n        <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Пошук\" aria-label=\"Search\">\r\n        <label>Фільтри</label>\r\n        <ul style=\"\">\r\n            <li>\r\n                <select class=\"selectpicker\">\r\n                    ");
                 EndContext();
                 BeginContext(314, 42, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "654437770f164581a36c5d8071313b10", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "82eac161b4654ece93b69e084cda1ce5", async() => {
                     BeginContext(331, 16, true);
                     WriteLiteral("Місцезнаходження");
                     EndContext();
@@ -86,7 +86,7 @@ using RentCourse.Models;
                 WriteLiteral("\r\n                </select>\r\n            </li>\r\n            <li>\r\n                <select class=\"selectpicker\">\r\n                    ");
                 EndContext();
                 BeginContext(489, 35, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "da3afc0bf28240e1b9b08c5ac541e211", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dab02e1c6117476dba3aca992bb54042", async() => {
                     BeginContext(506, 9, true);
                     WriteLiteral("Категорія");
                     EndContext();
@@ -118,7 +118,7 @@ using RentCourse.Models;
                 WriteLiteral("                        ");
                 EndContext();
                 BeginContext(627, 39, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "edd89a999ec84ed48cc38455dc6d0ec5", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "41ffe0622c3d4ebfac8d1dcf530b6026", async() => {
                     BeginContext(636, 21, false);
 #line 16 "C:\Users\alforov\source\repos\rent.ukraine\RentCourse\Views\Shared\Components\Category\Default.cshtml"
                            Write(category.CategotyName);
@@ -158,7 +158,7 @@ using RentCourse.Models;
                     ");
                 EndContext();
                 BeginContext(1096, 41, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a180f4043c4640c88120dc42c84ae247", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "862a5bd8972b46308dc9f74fa5afb822", async() => {
                     BeginContext(1113, 15, true);
                     WriteLiteral("Сортувати за...");
                     EndContext();
@@ -181,7 +181,7 @@ using RentCourse.Models;
                 WriteLiteral("\r\n                    ");
                 EndContext();
                 BeginContext(1159, 44, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9d197bb7ceec4d3cbcc93529a7b3ec03", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8f516424146244c4bd0ad359e019021d", async() => {
                     BeginContext(1185, 9, true);
                     WriteLiteral("Найновіші");
                     EndContext();
@@ -203,7 +203,7 @@ using RentCourse.Models;
                 WriteLiteral("\r\n                    ");
                 EndContext();
                 BeginContext(1225, 51, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e0a5905dc9534da7add5494aa7bd2fb7", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "54d93f0b47d74d72a7ea29dacfc8fceb", async() => {
                     BeginContext(1251, 16, true);
                     WriteLiteral("Ціна (мін->макс)");
                     EndContext();
@@ -225,7 +225,7 @@ using RentCourse.Models;
                 WriteLiteral("\r\n                    ");
                 EndContext();
                 BeginContext(1298, 51, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b61b8afa40f24e2b80f28876452bca75", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "49b9456ffa8941e08f74719ffd269d89", async() => {
                     BeginContext(1324, 16, true);
                     WriteLiteral("Ціна (макс->мін)");
                     EndContext();

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using RentCourse.Services;
 
 namespace RentCourse.Controllers
 {
@@ -143,6 +144,85 @@ namespace RentCourse.Controllers
 
         public IActionResult AccessDenied()
         {
+            return RedirectToAction("Login", "Account");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            //await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Account");
+        }
+
+        [HttpGet]
+        public IActionResult RestorePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RestorePassword(RestorePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var user = _context.Users.FirstOrDefault(u => u.Email == model.Email);
+
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Incorrect Email");
+                return View(model);
+            }
+
+            var UserName = user.Email;
+            EmailService emailService = new EmailService();
+
+            string url = "http://localhost:54480/Account/ChangePassword/" + user.Id;
+
+            await emailService.SendEmailAsync(model.Email, "Restore Password",
+                 $" Dear {UserName}," +
+                    $" <br/>" +
+                    $" To change your password" +
+                    $" <br/>" +
+                    $" you should visit this link <a href='{url}'>press</a>");
+
+            return View(model);
+        }
+
+        [HttpGet]
+        [Route("Account/ChangePassword/{id}")]
+        public IActionResult ChangePassword(string id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("Account/ChangePassword/{id}")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model, string id)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _context.Users.FirstOrDefault(u => u.Id == id);
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "This User not register");
+                    return View(model);
+                }
+
+                var hash_password = _userManager.PasswordHasher.HashPassword(user, model.Password);
+                user.PasswordHash = hash_password;
+                var result = await _userManager.UpdateAsync(user);
+
+                //await _myEmailSender.SendEmailAsync("m.rogach777@gmail.com", "ForgotPassword",
+                //    $" Dear {userName}," +
+                //    $" <br/>" +
+                //    $" To change your password" +
+                //    $" <br/>" +
+                //    $" you should visit this link <a href='{url}'>press</a>");
+            }
             return RedirectToAction("Login", "Account");
         }
     }

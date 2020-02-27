@@ -8,16 +8,6 @@ namespace RentCourse.ViewModels
 {
     public class RestorePasswordViewModel
     {
-        [Required]
-        [Display(Name = "Прізвище")]
-        public string LastName { get; set; }
-
-        [Required]
-        [Display(Name = "Ім'я")]
-        public string FirstName { get; set; }
-
-        [Required]
-        [Display(Name = "Email")]
         public string Email { get; set; }
     }
 }
