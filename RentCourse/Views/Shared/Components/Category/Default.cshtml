@@ -1,37 +1,79 @@
-﻿<div class="sidebar right" style="background-color:#3e2622">
+﻿<style>
+    a{
+        color:#3e2622;
+        text-decoration:none;
+    }
+</style>
+<nav id="sidebar" style="width:20%;padding:30px;border-right:3px solid #3e2622 !important">
+    <h3>Фільтри</h3>
     <form>
         <input class="form-control mr-sm-2" type="search" placeholder="Пошук" aria-label="Search">
-        <label>Фільтри</label>
-        <ul style="">
+        <ul class="list-unstyled components mb-5">
             <li>
-                <select class="selectpicker">
-                    <option disabled>Місцезнаходження</option>
-                </select>
-            </li>
-            <li>
-                <select class="selectpicker">
-                    <option disabled>Категорія</option>
+                <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Категорія</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu1">
                     @foreach (var category in Model)
                     {
-                        <option>@category.CategotyName</option>
+                        <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> @category.CategotyName</a></li>
                     }
-                </select>
+                </ul>
             </li>
             <li>
-                <input class="form-control mr-sm-2" type="text" placeholder="Мінімальна ціна" aria-label="MinPrice">
-                <input class="form-control mr-sm-2" type="text" placeholder="Максимальна ціна" aria-label="MaxPrice">
+                <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Місцезнаходження</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu2">
+                    @foreach (var location in Model)
+                    {
+                        @*<li><a href="#"><span class="fa fa-chevron-right mr-2"></span> </a></li>*@
+                    }
+                </ul>
             </li>
             <li>
-                <select class="selectpicker">
-                    <option disabled>Сортувати за...</option>
-                    <option value="Найновіші">Найновіші</option>
-                    <option value="мін->макс">Ціна (мін->макс)</option>
-                    <option value="макс->мін">Ціна (макс->мін)</option>
-                </select>
+                <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Ціна</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu3">
+                    <li><input class="form-control mr-sm-2" type="text" placeholder="Мінімальна ціна" aria-label="MinPrice" /></li>
+                    <li><input class="form-control mr-sm-2" type="text" placeholder="Максимальна ціна" aria-label="MaxPrice" /></li>
+                </ul>
             </li>
             <li>
-                <button type="submit"></button>
+                <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Сортувати за</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu4">
+                    <li>
+                            <input name="sort" type="radio" id="new" value="new">
+                            <label for="new">Найновіші</label><br>
+
+                            <input name="sort" type="radio" id="min" value="min">
+                            <label for="min">Ціна (мін->макс)</label><br>
+
+                            <input name="sort" type="radio" id="max" value="max">
+                            <label for="max">Ціна (макс->мін)</label><br>
+                    </li>
+                </ul>
+            </li>
+            <li style="display:flex;justify-content:center">
+                <button type="submit" style="font-size:1em;margin-top:10px !important;color:#3e2622;border-color:#3e2622;" id="addbtn" class="btn btn-outline-success">Шукати</button>
             </li>
         </ul>
     </form>
-</div>
+    <div class="mb-5">
+        <h5>Tag Cloud</h5>
+        <div class="tagcloud">
+            <a href="#" class="tag-cloud-link">dish</a>
+            <a href="#" class="tag-cloud-link">menu</a>
+            <a href="#" class="tag-cloud-link">food</a>
+            <a href="#" class="tag-cloud-link">sweet</a>
+            <a href="#" class="tag-cloud-link">tasty</a>
+            <a href="#" class="tag-cloud-link">delicious</a>
+            <a href="#" class="tag-cloud-link">desserts</a>
+            <a href="#" class="tag-cloud-link">drinks</a>
+        </div>
+    </div>
+    <div class="mb-5">
+        <h5>Новини</h5>
+        <form action="#" class="subscribe-form">
+            <div class="form-group d-flex">
+                <div class="icon"><span class="icon-paper-plane"></span></div>
+                <input type="text" class="form-control" placeholder="Уведіть email">
+            </div>
+        </form>
+    </div>
+</nav>

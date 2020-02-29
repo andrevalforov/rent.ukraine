@@ -12598,23 +12598,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\alforov\\.nuget\\packages\\": {},
+    "C:\\Users\\Andrew\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alforov\\Source\\Repos\\rent.ukraine\\RentCourse\\RentCourse.csproj",
+      "projectUniqueName": "C:\\Users\\Andrew\\Source\\Repos\\rent.ukraine2\\RentCourse\\RentCourse.csproj",
       "projectName": "RentCourse",
-      "projectPath": "C:\\Users\\alforov\\Source\\Repos\\rent.ukraine\\RentCourse\\RentCourse.csproj",
-      "packagesPath": "C:\\Users\\alforov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alforov\\Source\\Repos\\rent.ukraine\\RentCourse\\obj\\",
+      "projectPath": "C:\\Users\\Andrew\\Source\\Repos\\rent.ukraine2\\RentCourse\\RentCourse.csproj",
+      "packagesPath": "C:\\Users\\Andrew\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Andrew\\Source\\Repos\\rent.ukraine2\\RentCourse\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\alforov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Andrew\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

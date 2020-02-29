@@ -15,16 +15,24 @@ namespace RentCourse.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult MainThings()
         {
-            ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult MainRealEstate()
         {
-            ViewData["Message"] = "Your contact page.";
+            return View();
+        }
+
+        public IActionResult MainCars()
+        {
+            return View();
+        }
+
+        public IActionResult About()
+        {
+            ViewData["Message"] = "Your application description page.";
 
             return View();
         }

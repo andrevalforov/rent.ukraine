@@ -180,7 +180,7 @@ namespace RentCourse.Controllers
             var UserName = user.Email;
             EmailService emailService = new EmailService();
 
-            string url = "http://localhost:54480/Account/ChangePassword/" + user.Id;
+            string url = "http://localhost:49855/Account/ChangePassword/" + user.Id;
 
             await emailService.SendEmailAsync(model.Email, "Restore Password",
                  $" Dear {UserName}," +

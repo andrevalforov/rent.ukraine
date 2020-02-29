@@ -8,7 +8,7 @@
     <title>@ViewData["Title"] - rent.ukraine</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size:1.1em;color: #3e2622;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size:1.1em;color: #3e2622;background-image:url(https://stellationmedia.com/wp-content/uploads/2016/06/White-Geometric-Background-White-Geometric-Background-01.png) !important">
         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
             <img style="height:80px" src="~/images/logotype.png" />
         </a>
@@ -17,17 +17,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Головна<span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="MainThings" asp-route-category="">Прокат речей</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="Home" asp-action="MainThings">Прокат речей</a>
+                    <a class="nav-link" asp-controller="Home" asp-action="MainRealEstate">Оренда нерухомості</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Оренда нерухомості</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Оренда автомобілів</a>
+                    <a class="nav-link" asp-controller="Home" asp-action="MainCars">Оренда автомобілів</a>
                 </li>
             </ul>
             <button style="font-size:1em;margin:10px;color:#3e2622;border-color:#3e2622" id="addbtn" class="btn btn-outline-success my-2 my-sm-0">+ Подати оголошення</button>
@@ -35,7 +32,7 @@
                 <img class="dropbtn" style="margin:10px;height:30px;width:30px" src="~/images/img_165522.png"
                      onmouseover="this.src='/images/img_165522invert.png'"
                      onmouseout="this.src='/images/img_165522.png'" />
-                <div class="dropdown-content">
+                <div class="dropdown-content" id="accountdropdown">
                     <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Вхід</a>
                     <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Реєстрація</a>
                 </div>
@@ -56,7 +53,7 @@
 
     <div class="d-flex justify-content-between">
 
-        @await Component.InvokeAsync("Category");
+        @await Component.InvokeAsync("Category")
 
         <div class="container">
             <main role="main">
@@ -65,9 +62,8 @@
         </div>
     </div>
 
-    <div class="container body-content">
-        <hr />
-        <footer class="page-footer bg-light" style="font-size:1.1em;padding-top:40px;padding-bottom:20px;width:100%;color: #3e2622;">
+    <div style="width:100%;position:absolute">
+        <footer class="page-footer bg-light" style="font-size:1.1em;padding-top:40px;width:auto;padding-bottom:20px;color:#3e2622;background-image:url(https://stellationmedia.com/wp-content/uploads/2016/06/White-Geometric-Background-White-Geometric-Background-01.png) !important">
             <div class="d-flex flex-sm-column flex-lg-row justify-content-around">
                 <ul>
                     <li>
