@@ -143,3 +143,5 @@ C:\Users\Andrew\Source\Repos\rent.ukraine2\RentCourse\obj\Debug\netcoreapp2.1\Re
 C:\Users\Andrew\Source\Repos\rent.ukraine2\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.dll
 C:\Users\Andrew\Source\Repos\rent.ukraine2\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.pdb
 C:\Users\Andrew\Source\Repos\rent.ukraine2\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.csproj.CopyComplete
+C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.csprojAssemblyReference.cache
+C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Shared\ProductCard.g.cshtml.cs

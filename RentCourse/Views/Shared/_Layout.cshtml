@@ -27,7 +27,9 @@
                     <a class="nav-link" asp-controller="Home" asp-action="MainCars">Оренда автомобілів</a>
                 </li>
             </ul>
-            <button style="font-size:1em;margin:10px;color:#3e2622;border-color:#3e2622" id="addbtn" class="btn btn-outline-success my-2 my-sm-0">+ Подати оголошення</button>
+            <a asp-controller="Home" asp-action="AddProduct">
+                <button style="font-size:1em;margin:10px;color:#3e2622;border-color:#3e2622" id="addbtn" class="btn btn-outline-success my-2 my-sm-0">+ Подати оголошення</button>
+            </a>
             <div class="dropdown">
                 <img class="dropbtn" style="margin:10px;height:30px;width:30px" src="~/images/img_165522.png"
                      onmouseover="this.src='/images/img_165522invert.png'"

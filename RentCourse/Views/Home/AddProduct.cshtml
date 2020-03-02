@@ -1,0 +1,82 @@
+﻿@model RentCourse.ViewModels.AddProductViewModel
+@{
+    ViewData["Title"] = "Add Product";
+}
+@{
+    Layout = null;
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>@ViewData["Title"] - rent.ukraine</title>
+</head>
+<style>
+    .regform {
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        vertical-align: central;
+    }
+</style>
+<body style="background-image:url(https://stellationmedia.com/wp-content/uploads/2016/06/White-Geometric-Background-White-Geometric-Background-01.png)">
+
+    <a asp-controller="Home" asp-action="Index">
+        <button style="border-radius:25px;height:50px;width:50px; border-color:#3e2622;border-width:1px;background:none;margin-top:10px;margin-left:10px;">
+            <img src="~/images/Streamline-18-512.png" style="height:30px;width:30px" />
+        </button>
+    </a>
+    <form method="post" asp-controller="Home" asp-action="AddProduct" class="regform">
+        <table>
+            <tr>
+                <td style="padding-right:20px;min-width:50%">
+                    <h2>Подати оголошення</h2>
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div>
+                        <label asp-for="Type"></label><br />
+                        <select class="form-control" asp-for="Type"></select>
+                        <span asp-validation-for="Type"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Categoty"></label><br />
+                        <select class="form-control" asp-for="Categoty"></select>
+                        <span asp-validation-for="Categoty"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Title"></label><br />
+                        <input type="text" class="form-control" asp-for="Title" />
+                        <span asp-validation-for="Title"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Description"></label><br />
+                        <input type="text" class="form-control" asp-for="Description" />
+                        <span asp-validation-for="Description"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Price"></label><br />
+                        <input type="number" class="form-control" asp-for="Price" />
+                        <span asp-validation-for="Price"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Location"></label><br />
+                        <select class="form-control" asp-for="Location"></select>
+                        <span asp-validation-for="Location"></span>
+                    </div>
+                    <div>
+                        <input style="margin:5px;font-size:21px" type="submit" class="btn btn-outline-dark" value="Зареєструватися" />
+                    </div>
+                </td>
+                <td style="border-left:1px solid #3e2622">
+                    <img src="~/images/logotype.png" height="200" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+</body>

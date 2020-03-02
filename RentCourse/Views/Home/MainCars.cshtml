@@ -1,7 +1,24 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "MainCars";
 }
+@{
+    Layout = "_Layout";
+}
 
-<h2>Оренда автомобілів</h2>
+<!DOCTYPE html>
 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="row row-cols-1 row-cols-md-2">
+        @foreach (RentCourse.Data.Models.Product p in Model.GetProducts)
+        {
+            @await Html.PartialAsync("ProductCard", p);
+        }
+    </div>
+</body>
+</html>

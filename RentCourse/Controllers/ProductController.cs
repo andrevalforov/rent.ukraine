@@ -22,9 +22,13 @@ namespace RentCourse.Controllers
             _category = category;
             _type = type;
         }
-        [Authorize(Roles = "User")]
-        [Route("Product/ListProducts")]
-        [Route("Product/ListProducts/{category}")]
+        //[Authorize(Roles = "User")]
+        [Route("Home/MainCars")]
+        [Route("Home/MainCars/{category}")]
+        [Route("Home/MainRealEstate")]
+        [Route("Home/MainRealEstate/{category}")]
+        [Route("Home/MainThings")]
+        [Route("Home/MainThings/{category}")]
         public ViewResult ListProducts(string category)
         {
             IEnumerable<Product> products = null;
@@ -47,9 +51,35 @@ namespace RentCourse.Controllers
                 ProductCategory = productCategory
             };
 
-            ViewBag.Title = "All Products";
             return View(productObj);
 
+        }
+
+        [HttpGet]
+        public IActionResult AddProduct()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddProduct(AddProductViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Product product = new Product
+                {
+                    Title = model.Title,
+                    Description = model.Description,
+                    CategoryId = model.CategotyId,
+                    Price = model.Price,
+                    Available = true,
+                    DateOfPublication = DateTime.Now,
+                    Location = model.Location,
+
+                };
+            }
+
+            return View(model);
         }
     }
 }
