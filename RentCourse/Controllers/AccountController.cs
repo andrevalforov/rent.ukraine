@@ -21,6 +21,8 @@ namespace RentCourse.Controllers
         private readonly SignInManager<DbUser> _signInManager;
         private readonly RoleManager<DbRole> _roleManager;
         private readonly EFDbContext _context;
+        public DbUser ActiveUser = null;
+        private DbUser dbUser;
 
         public AccountController(UserManager<DbUser> userManager, SignInManager<DbUser> signInManager,
             RoleManager<DbRole> roleManager, EFDbContext context)
@@ -60,7 +62,7 @@ namespace RentCourse.Controllers
             await _signInManager.SignInAsync(user, isPersistent: false);
 
             await Authenticate(model.Email);
-
+            ActiveUser = dbUser;
             return RedirectToAction("Index", "Home");
         }
 
@@ -100,7 +102,7 @@ namespace RentCourse.Controllers
                     Email=model.Email
                 };
 
-                DbUser dbUser = new DbUser
+                dbUser = new DbUser
                 {
                     Email = model.Email,
                     UserName = model.Email,

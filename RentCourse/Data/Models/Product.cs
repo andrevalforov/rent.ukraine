@@ -19,7 +19,7 @@ namespace RentCourse.Data.Models
         public string Location { get; set; }
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public virtual UserProfile User { get; set; }
     }
 }

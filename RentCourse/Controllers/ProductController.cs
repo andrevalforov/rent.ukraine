@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RentCourse.Data.EFContext;
 using RentCourse.Data.Interfaces;
 using RentCourse.Data.Models;
 using RentCourse.ViewModels;
@@ -60,9 +61,9 @@ namespace RentCourse.Controllers
         {
             return View();
         }
-
+        [Authorize(Roles = "User")]
         [HttpPost]
-        public async Task<IActionResult> AddProduct(AddProductViewModel model)
+        public async Task<IActionResult> AddProduct(AddProductViewModel model,DbUser user)
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +76,7 @@ namespace RentCourse.Controllers
                     Available = true,
                     DateOfPublication = DateTime.Now,
                     Location = model.Location,
-
+                    UserId = user.Id
                 };
             }
 
