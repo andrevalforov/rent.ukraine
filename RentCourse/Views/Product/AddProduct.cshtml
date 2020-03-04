@@ -41,9 +41,9 @@
                         <span asp-validation-for="Type"></span>
                     </div>
                     <div>
-                        <label asp-for="Categoty"></label><br />
-                        <select class="form-control" asp-for="Categoty"></select>
-                        <span asp-validation-for="Categoty"></span>
+                        <label asp-for="CategotyId"></label><br />
+                        <select class="form-control" asp-for="CategotyId"></select>
+                        <span asp-validation-for="CategotyId"></span>
                     </div>
                     <div>
                         <label asp-for="Title"></label><br />
@@ -64,6 +64,12 @@
                         <label asp-for="Location"></label><br />
                         <select class="form-control" asp-for="Location"></select>
                         <span asp-validation-for="Location"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageName"></label>
+                        @*<input asp-for="Image" />*@
+                        <input class="form-control" type="file" name="uploadedFile" />
+                        <span asp-validation-for="ImageName" />
                     </div>
                     <div>
                         <input style="margin:5px;font-size:21px" type="submit" class="btn btn-outline-dark" value="Зареєструватися" />

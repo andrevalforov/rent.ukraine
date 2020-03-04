@@ -10,5 +10,6 @@ namespace RentCourse.ViewModels
     {
         public IEnumerable<Product> GetProducts { get; set; }
         public string ProductCategory { get; set; }
+        public string ProductType { get; set; }
     }
 }

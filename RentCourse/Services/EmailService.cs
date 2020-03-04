@@ -12,14 +12,14 @@ namespace RentCourse.Services
         public async Task SendEmailAsync(string email, string subject, string message)
         {
             MailMessage mail = new MailMessage();
-            mail.From = new MailAddress("pluzharasemen@gmail.com");
+            mail.From = new MailAddress("rent.ukraine1@gmail.com");
             mail.To.Add(email);
             mail.Subject = "Forgot password";
             mail.IsBodyHtml = true;
             mail.Body = message;
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
             {
-                Credentials = new NetworkCredential("pluzharasemen@gmail.com", "Qwerty1-"),
+                Credentials = new NetworkCredential("rent.ukraine1@gmail.com", "hIfpyh-qujwik-0fycti"),
                 EnableSsl = true
             };
             client.Send(mail);
