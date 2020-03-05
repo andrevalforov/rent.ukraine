@@ -11,7 +11,7 @@ namespace RentCourse.ViewModels
     {
         [Required]
         [Display(Name ="Тип")]
-        public string Type { get; set; }
+        public int TypeId { get; set; }
 
         [Required]
         [Display(Name = "Категорія")]
