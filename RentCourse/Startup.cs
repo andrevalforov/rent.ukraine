@@ -40,9 +40,15 @@ namespace RentCourse
             options.UseSqlServer(
                 Configuration.GetConnectionString("MainConnection")));
 
-            services.AddIdentity<DbUser, DbRole>(options => options.Stores.MaxLengthForKeys = 128)
-                .AddEntityFrameworkStores<EFDbContext>()
-                .AddDefaultTokenProviders();
+            services.AddIdentity<DbUser, DbRole>()
+        .AddRoleManager<RoleManager<DbRole>>()
+        .AddDefaultUI()
+        .AddDefaultTokenProviders()
+        .AddEntityFrameworkStores<EFDbContext>();
+
+            //services.AddIdentity<DbUser, DbRole>(options => options.Stores.MaxLengthForKeys = 128)
+            //    .AddEntityFrameworkStores<EFDbContext>()
+            //    .AddDefaultTokenProviders();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
@@ -55,6 +61,9 @@ namespace RentCourse
             services.AddTransient<ICategories, CategoryRepository>();
             services.AddTransient<ITypes, TypeRepository>();
 
+            services.AddMemoryCache();
+            services.AddSession();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -62,6 +71,7 @@ namespace RentCourse
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseAuthentication();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -72,9 +82,10 @@ namespace RentCourse
             }
 
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            app.UseSession();
+            //app.UseCookiePolicy();
 
-            SeederDb.SeedData(app.ApplicationServices, env, this.Configuration);
+            //SeederDb.SeedData(app.ApplicationServices, env, this.Configuration);
 
             app.UseMvc(routes =>
             {

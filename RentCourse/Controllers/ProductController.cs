@@ -30,9 +30,30 @@ namespace RentCourse.Controllers
             _env = env;
             _context = context;
         }
+        [Route("Product/MainThings")]
+        [Route("Product/MainThings/{category}")]
+        public IActionResult MainThings(string category)
+        {
+            return ListProducts("MainThings",category);
+        }
+
+        [Route("Product/MainRealEstate")]
+        [Route("Product/MainRealEstate/{category}")]
+        public IActionResult MainRealEstate(string category)
+        {
+            return ListProducts("MainRealEstate", category);
+        }
+
+        [Route("Product/MainCars")]
+        [Route("Product/MainCars/{category}")]
+        public IActionResult MainCars(string category)
+        {
+            return ListProducts("MainCars", category);
+        }
+
         //[Authorize(Roles = "User")]
-        [Route("Home/{type}")]
-        [Route("Home/{type}/{category}")]
+        //[Route("Product/{type}")]
+        //[Route("Product/{type}/{category}")]
         public ViewResult ListProducts(string type,string category)
         {
             IEnumerable<Product> products = null;
@@ -46,6 +67,7 @@ namespace RentCourse.Controllers
             {
                 products = _products.GetAllProducts
                     .Where(x=>x.Category.CategoryType.Name.ToLower()==type.ToLower());
+                productType = type;
             }
             else
             {

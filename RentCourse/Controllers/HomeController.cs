@@ -15,20 +15,7 @@ namespace RentCourse.Controllers
             return View();
         }
 
-        public IActionResult MainThings()
-        {
-            return View();
-        }
-
-        public IActionResult MainRealEstate()
-        {
-            return View();
-        }
-
-        public IActionResult MainCars()
-        {
-            return View();
-        }
+       
 
         public IActionResult About()
         {
