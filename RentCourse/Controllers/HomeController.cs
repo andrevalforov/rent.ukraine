@@ -13,9 +13,7 @@ namespace RentCourse.Controllers
         public IActionResult Index()
         {
             return View();
-        }
-
-       
+        }       
 
         public IActionResult About()
         {
