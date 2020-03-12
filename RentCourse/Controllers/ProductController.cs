@@ -127,7 +127,8 @@ namespace RentCourse.Controllers
                             Available = true,
                             DateOfPublication = DateTime.Now,
                             Location = model.Location,
-                            UserId = user.Id
+                            UserId = user.Id,
+                            ViewCount=0
                         };
 
                         _context.Products.Add(product);
