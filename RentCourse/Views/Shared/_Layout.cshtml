@@ -35,8 +35,19 @@
                      onmouseover="this.src='/images/img_165522invert.png'"
                      onmouseout="this.src='/images/img_165522.png'" />
                 <div class="dropdown-content" id="accountdropdown">
-                    <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Вхід</a>
-                    <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Реєстрація</a>
+                    @if (User.IsInRole("User"))
+                    {
+                        <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Моя сторінка</a>
+                        <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Обране</a>
+                        <form method="post" asp-controller="Account" asp-action="Logout">
+                            <input class="nav-link text-dark" type="submit" value="Вихід"/>
+                        </form>
+                    }
+                    else
+                    {
+                        <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Вхід</a>
+                        <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Реєстрація</a>
+                    }
                 </div>
             </div>
             <div class="dropdown">

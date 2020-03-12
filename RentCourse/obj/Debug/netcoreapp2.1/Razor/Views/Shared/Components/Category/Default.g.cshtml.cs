@@ -54,7 +54,7 @@ using RentCourse.Models;
             WriteLiteral("<style>\r\n    a{\r\n        color:#3e2622;\r\n        text-decoration:none;\r\n    }\r\n</style>\r\n<nav id=\"sidebar\" style=\"width:20%;padding:30px;border-right:3px solid #3e2622 !important\">\r\n    <h3>Фільтри</h3>\r\n    ");
             EndContext();
             BeginContext(208, 2695, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5cec36c93ea8454ea97b714a0aebce76", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "293fcf8b264e4366bcec1f3bde83645e", async() => {
                 BeginContext(214, 367, true);
                 WriteLiteral(@"
         <input class=""form-control mr-sm-2"" type=""search"" placeholder=""Пошук"" aria-label=""Search"">

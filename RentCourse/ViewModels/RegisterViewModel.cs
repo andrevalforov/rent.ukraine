@@ -49,8 +49,6 @@ namespace RentCourse.ViewModels
         [Compare("Password", ErrorMessage = "Паролі не співпадають")]
         [DataType(DataType.Password)]
         [Display(Name = "Підтвердіть пароль")]
-        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,24}$",
-        ErrorMessage = "Некоректний формат паролю")]
         public string PasswordConfirm { get; set; }
     }
 }
