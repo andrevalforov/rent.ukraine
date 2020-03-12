@@ -7,7 +7,7 @@ namespace RentCourse.Data.Models
 {
     public class Location
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string City { get; set; }
     }
 }

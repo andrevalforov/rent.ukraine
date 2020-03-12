@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RentCourse.Data.Models;
+using RentCourse.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,12 @@ namespace RentCourse.Data.EFContext
         
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Models.Type> Types { get; set; }
         public virtual DbSet<UserProfile> UserProfile { get; set; }
-        
+        public virtual DbSet<FileModel> Files { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

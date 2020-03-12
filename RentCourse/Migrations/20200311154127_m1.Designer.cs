@@ -10,7 +10,7 @@ using RentCourse.Data.EFContext;
 namespace RentCourse.Migrations
 {
     [DbContext(typeof(EFDbContext))]
-    [Migration("20200218182937_m1")]
+    [Migration("20200311154127_m1")]
     partial class m1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,11 +63,9 @@ namespace RentCourse.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("ProviderKey")
-                        .HasMaxLength(128);
+                    b.Property<string>("ProviderKey");
 
                     b.Property<string>("ProviderDisplayName");
 
@@ -85,11 +83,9 @@ namespace RentCourse.Migrations
                 {
                     b.Property<string>("UserId");
 
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(128);
+                    b.Property<string>("Name");
 
                     b.Property<string>("Value");
 
@@ -203,6 +199,19 @@ namespace RentCourse.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("RentCourse.Data.Models.Location", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("City");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Locations");
+                });
+
             modelBuilder.Entity("RentCourse.Data.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -223,9 +232,7 @@ namespace RentCourse.Migrations
 
                     b.Property<string>("Title");
 
-                    b.Property<int>("UserId");
-
-                    b.Property<string>("UserId1");
+                    b.Property<string>("UserId");
 
                     b.Property<int>("ViewCount");
 
@@ -233,7 +240,7 @@ namespace RentCourse.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
                 });
@@ -288,6 +295,20 @@ namespace RentCourse.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserProfile");
+                });
+
+            modelBuilder.Entity("RentCourse.Models.FileModel", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Path");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Files");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -352,7 +373,7 @@ namespace RentCourse.Migrations
 
                     b.HasOne("RentCourse.Data.Models.UserProfile", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("RentCourse.Data.Models.UserProfile", b =>
