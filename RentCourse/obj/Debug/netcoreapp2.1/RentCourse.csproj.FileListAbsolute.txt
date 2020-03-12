@@ -187,3 +187,4 @@ C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\Re
 C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.RazorTargetAssemblyInfo.cs
 C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.Views.pdb
 C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.csproj.CopyComplete
+C:\Users\alforov\source\repos\rent.ukraine\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.csprojAssemblyReference.cache

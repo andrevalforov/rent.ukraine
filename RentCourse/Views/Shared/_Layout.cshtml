@@ -8,7 +8,7 @@
     <title>@ViewData["Title"] - rent.ukraine</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size:1.1em;color: #3e2622;background-image:url(https://stellationmedia.com/wp-content/uploads/2016/06/White-Geometric-Background-White-Geometric-Background-01.png) !important">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size:1.1em;height:90px;color: #3e2622;background-image:url(https://stellationmedia.com/wp-content/uploads/2016/06/White-Geometric-Background-White-Geometric-Background-01.png) !important">
         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
             <img style="height:80px" src="~/images/logotype.png" />
         </a>
@@ -76,20 +76,20 @@
     </div>
 
     <div style="width:100%;position:absolute">
-        <footer class="page-footer bg-light" style="font-size:1.1em;padding-top:40px;width:auto;padding-bottom:20px;color:#3e2622;background-image:url(https://stellationmedia.com/wp-content/uploads/2016/06/White-Geometric-Background-White-Geometric-Background-01.png) !important">
+        <footer class="page-footer bg-light" style="font-size:1em;padding-top:10px;width:auto;padding-bottom:10px;color:#3e2622;background-image:url(https://stellationmedia.com/wp-content/uploads/2016/06/White-Geometric-Background-White-Geometric-Background-01.png) !important">
             <div class="d-flex flex-sm-column flex-lg-row justify-content-around">
                 <ul>
                     <li>
-                        <a class="flink" href="#">Головна</a>
+                        <a class="flink" asp-controller="Home" asp-action="Index">Головна</a>
                     </li>
                     <li>
-                        <a class="flink" href="#">Прокат речей</a>
+                        <a class="flink" asp-controller="Product" asp-action="MainThings">Прокат речей</a>
                     </li>
                     <li>
-                        <a class="flink" href="#">Оренда нерухомості</a>
+                        <a class="flink" asp-controller="Product" asp-action="MainRealEstate">Оренда нерухомості</a>
                     </li>
                     <li>
-                        <a class="flink" href="#">Оренда автомобілів</a>
+                        <a class="flink" asp-controller="Product" asp-action="MainCars">Оренда автомобілів</a>
                     </li>
                 </ul>
                 <ul>
@@ -110,8 +110,8 @@
                 <img style="margin:5px" class="icon" src="~/images/fb.png">
             </div>
             <hr>
-            <p style="text-align:center">&copy; 2020 - rent.ukraine</p>
-            <p style="text-align:center">Усі права захищено</p>
+            <p style="text-align:center;font-size:1em">&copy; 2020 - rent.ukraine</p>
+            <p style="text-align:center;font-size:1em">Усі права захищено</p>
         </footer>
     </div>
 
