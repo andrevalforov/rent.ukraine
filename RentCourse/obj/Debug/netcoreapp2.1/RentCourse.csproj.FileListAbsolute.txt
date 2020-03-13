@@ -153,7 +153,6 @@ C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\bin\Debug\netcoreapp2.1\Re
 C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\bin\Debug\netcoreapp2.1\RentCourse.pdb
 C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\bin\Debug\netcoreapp2.1\RentCourse.Views.dll
 C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\bin\Debug\netcoreapp2.1\RentCourse.Views.pdb
-C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.csprojAssemblyReference.cache
 C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.csproj.CoreCompileInputs.cache
 C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.RazorAssemblyInfo.cache
 C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.RazorAssemblyInfo.cs
@@ -188,3 +187,4 @@ C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\Re
 C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.dll
 C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.pdb
 C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.csproj.CopyComplete
+C:\Users\Andrew\source\repos\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.csprojAssemblyReference.cache

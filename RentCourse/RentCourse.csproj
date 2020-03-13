@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200313111839_m3.cs" />
+    <Compile Remove="Migrations\20200313111839_m3.Designer.cs" />
+    <Compile Remove="Migrations\20200313112502_m3.cs" />
+    <Compile Remove="Migrations\20200313112502_m3.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />

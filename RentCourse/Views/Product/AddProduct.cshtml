@@ -38,7 +38,7 @@
                     <div>
                         <label asp-for="TypeId"></label><br />
                         <p>
-                            <select class="form-control" id="typeselect" asp-for="TypeId">
+                            <select class="form-control" asp-for="TypeId">
                                 <option value="1">Прокат речей</option>
                                 <option value="2">Оренда нерухомості</option>
                                 <option value="3">Оренда авто</option>
@@ -51,10 +51,9 @@
                         <select class="form-control" asp-for="CategotyId">
                             @*@foreach (var category in Model)
                             {
-                                if (category.Id ==)
-                                {
+                                
                                     <option value="@category.Id">@category.Name</option>
-                                }
+                                
                             }*@
                         </select>
                         <span asp-validation-for="CategotyId"></span>
@@ -75,9 +74,9 @@
                         <span asp-validation-for="Price"></span>
                     </div>
                     <div>
-                        <label asp-for="Location"></label><br />
-                        <select class="form-control" asp-for="Location"></select>
-                        <span asp-validation-for="Location"></span>
+                        <label asp-for="LocationId"></label><br />
+                        <select class="form-control" asp-for="LocationId"></select>
+                        <span asp-validation-for="LocationId"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="ImageName"></label>

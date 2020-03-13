@@ -40,7 +40,7 @@ namespace RentCourse.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View();
             }
@@ -128,7 +128,7 @@ namespace RentCourse.Controllers
 
             }
 
-            return View(model);
+            return RedirectToAction("Index", "Home");
         }
 
         private async Task Authenticate(string userName)

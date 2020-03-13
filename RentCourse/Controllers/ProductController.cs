@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RentCourse.Components;
 using RentCourse.Data.EFContext;
 using RentCourse.Data.Interfaces;
 using RentCourse.Data.Models;
@@ -20,76 +21,112 @@ namespace RentCourse.Controllers
         private readonly ICategories _category;
         private readonly IHostingEnvironment _env;
         private readonly ITypes _type;
+        private readonly ILocations _location;
         private readonly EFDbContext _context;
 
-        public ProductController(IProducts products, ICategories category, ITypes type, IHostingEnvironment env, EFDbContext context)
+        public ProductController(IProducts products, ICategories category, ITypes type, IHostingEnvironment env, EFDbContext context, ILocations location)
         {
             _products = products;
             _category = category;
             _type = type;
             _env = env;
             _context = context;
+            _location = location;
         }
         [Route("Product/MainThings")]
         [Route("Product/MainThings/{category}")]
-        public IActionResult MainThings(string category)
-        {
-            return ListProducts("MainThings",category);
-        }
-
-        [Route("Product/MainRealEstate")]
-        [Route("Product/MainRealEstate/{category}")]
-        public IActionResult MainRealEstate(string category)
-        {
-            return ListProducts("MainRealEstate", category);
-        }
-
-        [Route("Product/MainCars")]
-        [Route("Product/MainCars/{category}")]
-        public IActionResult MainCars(string category)
-        {
-            return ListProducts("MainCars", category);
-        }
-
-        //[Authorize(Roles = "User")]
-        //[Route("Product/{type}")]
-        //[Route("Product/{type}/{category}")]
-        public ViewResult ListProducts(string type,string category)
+        public ViewResult MainThings(string category)
         {
             IEnumerable<Product> products = null;
             string productCategory = "";
-            string productType = "";
-            if (string.IsNullOrEmpty(type))
-            {
-                products = _products.GetAllProducts.OrderBy(i => i.Id);
-            }
-            else if (string.IsNullOrEmpty(category) && !string.IsNullOrEmpty(type))
+            string type = "MainThings";
+            if (string.IsNullOrEmpty(category))
             {
                 products = _products.GetAllProducts
-                    .Where(x=>x.Category.CategoryType.Name.ToLower()==type.ToLower());
-                productType = type;
+                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id);
             }
             else
             {
                 products = _products.GetAllProducts
-                    .Where(x => x.Category.CategoryType.Name.ToLower() == type.ToLower())
-                    .Where(x=>x.Category.Name.ToLower()==category.ToLower());
+                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id)
+                    .Where(x => x.Category.Name.ToLower() == category.ToLower());
 
                 productCategory = category;
-                productType = type;
             }
 
             var productObj = new ProductListViewModel
             {
                 GetProducts = products,
                 ProductCategory = productCategory,
-                ProductType=productType
+                ProductType = type
             };
 
             return View(productObj);
-
         }
 
+        [Route("Product/MainRealEstate")]
+        [Route("Product/MainRealEstate/{category}")]
+        public ViewResult MainRealEstate(string category)
+        {
+            IEnumerable<Product> products = null;
+            string productCategory = "";
+            string type = "MainRealEstate";
+            if (string.IsNullOrEmpty(category))
+            {
+                products = _products.GetAllProducts
+                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id);
+            }
+            else
+            {
+                products = _products.GetAllProducts
+                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id)
+                    .Where(x => x.Category.Name.ToLower() == category.ToLower());
+
+                productCategory = category;
+            }
+
+            var productObj = new ProductListViewModel
+            {
+                GetProducts = products,
+                ProductCategory = productCategory,
+                ProductType = type
+            };
+
+            return View(productObj);
+        }
+
+        [Route("Product/MainCars")]
+        [Route("Product/MainCars/{category}")]
+        public ViewResult MainCars(string category)
+        {
+            IEnumerable<Product> products = null;
+            string productCategory = "";
+            string type = "MainCars";
+            if (string.IsNullOrEmpty(category))
+            {
+                products = _products.GetAllProducts
+                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y=>y.Name.ToLower()==type.ToLower()).Id);
+            }
+            else
+            {
+                products = _products.GetAllProducts
+                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id)
+                    .Where(x => x.Category.Name.ToLower() == category.ToLower());
+
+                productCategory = category;
+            }
+
+            var productObj = new ProductListViewModel
+            {
+                GetProducts = products,
+                ProductCategory = productCategory,
+                ProductType = type
+            };
+
+            return View(productObj);
+        }
+
+        
         [HttpGet]
         public IActionResult AddProduct()
         {
@@ -126,9 +163,12 @@ namespace RentCourse.Controllers
                             Price = model.Price,
                             Available = true,
                             DateOfPublication = DateTime.Now,
-                            Location = model.Location,
+                            LocationId = model.LocationId,
                             UserId = user.Id,
-                            ViewCount=0
+                            ViewCount = 0,
+                            Image=fileName,
+                            Category=_category.Categories.FirstOrDefault(x=>x.Id==model.CategotyId)
+                            //Location=_location.Locations.FirstOrDefault(x=>x.Id==model.LocationId)
                         };
 
                         _context.Products.Add(product);

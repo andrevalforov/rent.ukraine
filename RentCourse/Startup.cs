@@ -71,6 +71,7 @@ namespace RentCourse
             services.AddTransient<IProducts, ProductRepository>();
             services.AddTransient<ICategories, CategoryRepository>();
             services.AddTransient<ITypes, TypeRepository>();
+            services.AddTransient<ILocations, LocationRepository>();
 
             services.AddMemoryCache();
             services.AddSession();

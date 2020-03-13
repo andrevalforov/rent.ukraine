@@ -31,9 +31,11 @@ namespace RentCourse.ViewModels
 
         [Required]
         [Display(Name = "Місцезнаходження")]
-        public string Location { get; set; }
+        public int LocationId { get; set; }
 
         [Display(Name = "Фото товару")]
         public string ImageName { get; set; }
+
+        public Components.Mod mod { get; set; }
     }
 }
