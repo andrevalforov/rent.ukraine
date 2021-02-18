@@ -1,20 +1,210 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@{
+    Layout = null;
+}
 <style>
-    p{
-        font-size:1.2em
+    p {
+        font-size: 1.2em
+    }
+
+    html {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+        -webkit-box-sizing: inherit;
+        -moz-box-sizing: inherit;
+        box-sizing: inherit;
+    }
+
+    /*body {
+        padding: 0;
+        margin: 0;
+        height: auto;
+        width: 100%;
+    }*/
+
+    b {
+        position: relative;
+        display: block;
+        font-family: helvetica neue, helvetica, sans-serif;
+        line-height: 1.15em;
+        margin-top: -1.15em;
+        top: 2.3em;
+        font-size: 0.67em;
+        font-weight: 400;
+        letter-spacing: 0.025em;
+        opacity: 0.75;
+        text-align: center;
+    }
+
+        b span {
+            font-size: 0.785em;
+            font-weight: 400;
+            opacity: 0.4;
+        }
+
+    #intro {
+        width: 200px;
+        margin: 100px auto 0;
+    }
+
+    .button {
+        display: inline-block;
+        text-decoration: none;
+        position: relative;
+        margin-top: 40px;
+    }
+
+        .button .bottom {
+            position: absolute;
+            left: 7px;
+            top: 7px;
+            width: 100%;
+            height: 100%;
+            background-color: #2acdc1;
+            display: block;
+            -webkit-transition: all .15s ease-out;
+            -moz-transition: all .15s ease-out;
+            -o-transition: all .15s ease-out;
+            transition: all .15s ease-out;
+        }
+
+        .button .top {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            padding: 24px 34px 22px 34px;
+            border: 2px solid #04049d;
+        }
+
+    .button-dark .top {
+        border: 2px solid #fff;
+    }
+
+    .button .top .label {
+        font-family: sans-serif;
+        font-weight: 600;
+        color: #04049d;
+        font-size: 12px;
+        line-height: 110%;
+        letter-spacing: 2px;
+        text-align: center;
+        text-transform: uppercase;
+        -webkit-transition: all .15s ease-out;
+        -moz-transition: all .15s ease-out;
+        -o-transition: all .15s ease-out;
+        transition: all .15s ease-out;
+    }
+
+    .button-dark .top .label {
+        color: #fff;
+    }
+
+    .button:hover .bottom {
+        left: 0;
+        top: 0;
+        background-color: #f3f3f3;
+    }
+
+    .button:hover .top .label {
+        color: #2acdc1;
+    }
+
+    .button-border {
+        position: absolute;
+        background-color: #2acdc1;
+        -webkit-transition: all .25s ease-out;
+        -moz-transition: all .25s ease-out;
+        -o-transition: all .25s ease-out;
+        transition: all .25s ease-out;
+    }
+
+    .button:hover .top .button-border-left, .button:hover .top .button-border-right {
+        height: calc(100% + 2px);
+    }
+
+    .button:hover .top .button-border-top, .button:hover .top .button-border-bottom {
+        width: calc(100% + 2px);
+    }
+
+    .button-border-left {
+        left: -2px;
+        bottom: -2px;
+        width: 2px;
+        height: 0;
+    }
+
+    .button-border-top {
+        left: -2px;
+        top: -2px;
+        width: 0;
+        height: 2px;
+    }
+
+    .button-border-right {
+        right: -2px;
+        top: -2px;
+        width: 2px;
+        height: 0;
+    }
+
+    .button-border-bottom {
+        right: -2px;
+        bottom: -2px;
+        width: 0;
+        height: 2px;
     }
 </style>
-<div style="margin-left:50px;margin-right:50px;margin-top:20px;margin-bottom:20px;background-color:white">
-    <img style="float:right;height:auto" src="~/images/logo.jpg" />
-    <h2>
-        rent.ukraine - сайт з пошуку та надання послуг прокату й оренди різних категорій №1.
-    </h2>
-    <p>Щоб опублікувати перше оголошення, потрібно виконати П'ЯТЬ простих кроків:</p>
-    <p>1. Зареєструватися/увійти на сайт</p>
-    <p>2. Натиснути "Подати оголошення"</p>
-    <p>3. Заповнити деталі (заголовок, фото, опис, ціну тощо)</p>
-    <p>4. Обрати способи рекламування оголошення</p>
-    <p>5. Опублікувати</p>
-</div>
+<body style="background: url('../../wwwroot/images/IMG_0726.JPG');
+        background-size: cover;
+        background-repeat: no-repeat">
+    <nav>
+        <button></button>
+
+        <section id="intro">
+            <div id="intro-content" class="center-content">
+                <div class="center-content-inner">
+                    <div class="content-section content-section-margin">
+                        <div class="content-section-grid clearfix">
+                            <a href="#" class="button nav-link">
+                                <div class="bottom"></div>
+                                <div class="top">
+                                    <div class="label">Go Retro Baby</div>
+                                    <div class="button-border button-border-left"></div>
+                                    <div class="button-border button-border-top"></div>
+                                    <div class="button-border button-border-right"></div>
+                                    <div class="button-border button-border-bottom"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </nav>
+    @*<div style="margin-left:50px;margin-right:50px;margin-top:20px;margin-bottom:20px">
+            <img style="float:right;height:auto" src="~/images/logo.jpg" />
+            <h2>
+                rent.ukraine - сайт з пошуку та надання послуг прокату й оренди різних категорій №1.
+            </h2>
+            <p>Щоб опублікувати перше оголошення, потрібно виконати П'ЯТЬ простих кроків:</p>
+            <p>1. Зареєструватися/увійти на сайт</p>
+            <p>2. Натиснути "Подати оголошення"</p>
+            <p>3. Заповнити деталі (заголовок, фото, опис, ціну тощо)</p>
+            <p>4. Обрати способи рекламування оголошення</p>
+            <p>5. Опублікувати</p>
+        </div>*@
+</body>
