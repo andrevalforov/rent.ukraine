@@ -21,20 +21,41 @@
         align-items: center;
         vertical-align: central;
     }
+    h2, label {
+        font-family: sans-serif;
+        font-weight: 600;
+        color: #04049d;
+        text-transform: uppercase;
+    }
+
+    input {
+        border-width: 2px !important;
+        border-color: #04049d !important;
+        color: #04049d !important;
+    }
+
+    .btn-outline-dark:hover {
+        background: #04049d !important;
+        color: #ffffff !important;
+    }
+
+    td div{
+        margin-bottom:1em;
+    }
 </style>
-<body style="background-image:url(https://stellationmedia.com/wp-content/uploads/2016/06/White-Geometric-Background-White-Geometric-Background-01.png)">
+<body style="background-image:url(https://pbs.twimg.com/media/EuxyjDgXIAEo4Ke?format=jpg&name=large)">
 
     <a asp-controller="Home" asp-action="Index">
-        <button style="border-radius:25px;height:50px;width:50px; border-color:#3e2622;border-width:1px;background:none;margin-top:10px;margin-left:10px;">
-            <img src="~/images/Streamline-18-512.png" style="height:30px;width:30px" />
+        <button style="border-radius:25px;height:50px;width:50px; border-color:#04049d;border-width:1px;background:none;margin-top:10px;margin-left:10px;">
+            <img src="~/images/home-button.png" style="height:30px;width:30px" />
         </button>
     </a>
     <form method="post" asp-controller="Account" asp-action="Register" class="regform">
         <table>
             <tr>
                 <td style="padding-right:20px;min-width:50%">
-                    <div style="display:flex;justify-content:center">
-                        <h2>Реєстрація нового користувача</h2>
+                    <div style="display:flex;justify-content:center;margin-bottom:0">
+                        <h2 style="color:#2acdc1">Реєстрація нового користувача</h2>
                     </div>
                     <div asp-validation-summary="ModelOnly"></div>
                     <div>
@@ -76,8 +97,8 @@
                         <input style="margin:5px;font-size:21px" type="submit" class="btn btn-outline-dark" value="Зареєструватися" />
                     </div>
                 </td>
-                <td style="border-left:1px solid #3e2622">
-                    <img src="~/images/logotype.png" height="200" />
+                <td style="border-left:1px solid #04049d">
+                    <img src="~/images/rent-logo3.png" style="height:20em; margin-left:2em" />
                 </td>
             </tr>
         </table>

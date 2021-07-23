@@ -1,11 +1,11 @@
 ﻿
-.navbar-brand{
+/*.navbar-brand{
     font-family:dosis-light;
 }
 
 .navbar {
     color: #3e2622;
-}
+}*/
 
 .icon {
     width: 30px;
@@ -19,14 +19,6 @@
         filter: grayscale(0%);
         cursor: pointer;
     }
-
-
-@font-face {
-    font-family: 'dosislight';
-    src: url('../../Fonts/webfontkit-20200213-093443/dosis-light-webfont.woff2') format('woff2'), url('../../Fonts/webfontkit-20200213-093443/dosis-light-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 
 .dropdown {
     position: relative;
@@ -56,7 +48,7 @@
 
 #addbtn:hover {
     color: #f8f9fa !important;
-    background-color: #3e2622;
+    background-color: #04049d;
 }
 
 /*.dropbtn{

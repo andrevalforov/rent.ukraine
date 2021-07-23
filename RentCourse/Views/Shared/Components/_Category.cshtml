@@ -1,0 +1,94 @@
+﻿<style>
+    nav{
+        font-family:sans-serif;
+    }
+    a {
+        color: #04049d;
+        text-decoration: none;
+    }
+    li input{
+        border-color:#04049d;
+        border-width:2px;
+    }
+    li label{
+        color:#04049d;
+        font-family:sans-serif;
+    }
+</style>
+<nav id="sidebar" style="
+        width: 20%;
+        padding: 30px;
+        border-right: 3px solid #04049d !important;
+        background-image: url('https://pbs.twimg.com/media/EuxzjKNWQAUSiYC?format=jpg&name=large');
+        background-size: cover;">
+    <div class="label" style="font-family:sans-serif; color:#04049d; font-size:2em; text-transform:uppercase; font-weight:600">Фільтри</div>
+    <form>
+        <input class="form-control mr-sm-2" type="search" placeholder="ПОШУК" style="border-width:2px;border-color:#04049d" aria-label="Search">
+        <ul class="list-unstyled components mb-5">
+            <li>
+                <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="text-transform: uppercase; font-weight: 600; font-family:sans-serif">Категорія</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu1">
+                    @foreach (var category in Model.Categories)
+                    {
+                        
+                        <li>
+                            <input name="category" type="radio" id="@category.Name" value="@category.Name"/>
+                            <label for="@category.Name">@category.Name</label>
+                        </li>
+                    }
+                </ul>
+            </li>
+            <li>
+                <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="text-transform: uppercase; font-weight: 600; font-family:sans-serif">Місцезнаходження</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu2">
+                    @foreach (var location in Model.Locations)
+                    {
+                        <li>
+                            <input name="location" type="radio" id="@location.City" value="@location.City" />
+                            <label for="@location.City">@location.City</label>
+                        </li>
+                    }
+                </ul>
+            </li>
+            <li>
+                <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="text-transform: uppercase; font-weight: 600; font-family:sans-serif">Ціна</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu3">
+                    <li style="display:flex;flex-direction:column">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Мінімальна ціна" aria-label="MinPrice" style="margin-bottom:0.5em"/>
+                    <input class="form-control mr-sm-2" type="text" placeholder="Максимальна ціна" aria-label="MaxPrice" /></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="text-transform: uppercase; font-weight: 600; font-family:sans-serif">Сортувати за</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu4">
+                    <li>
+                        <input name="sort" type="radio" id="new" value="new">
+                        <label for="new">Найновіші</label><br>
+
+                        <input name="sort" type="radio" id="min" value="min">
+                        <label for="min">Ціна (мін->макс)</label><br>
+
+                        <input name="sort" type="radio" id="max" value="max">
+                        <label for="max">Ціна (макс->мін)</label><br>
+                    </li>
+                </ul>
+            </li>
+            <li style="display:flex;justify-content:center">
+                <button type="submit" style="font-size:1em;font-family:sans-serif;font-weight:600;margin-top:1em !important;color:#04049d;border-color:#04049d;border-width:2px" id="addbtn" class="btn btn-outline-success">ШУКАТИ</button>
+            </li>
+        </ul>
+    </form>
+    <div class="mb-5">
+        <div class="label" style="color:#04049d; text-transform:uppercase; font-size:1.3em; font-weight:600">Tag Cloud</div>
+        <div class="tagcloud">
+            <a href="#" class="tag-cloud-link">dish</a>
+            <a href="#" class="tag-cloud-link">menu</a>
+            <a href="#" class="tag-cloud-link">food</a>
+            <a href="#" class="tag-cloud-link">sweet</a>
+            <a href="#" class="tag-cloud-link">tasty</a>
+            <a href="#" class="tag-cloud-link">delicious</a>
+            <a href="#" class="tag-cloud-link">desserts</a>
+            <a href="#" class="tag-cloud-link">drinks</a>
+        </div>
+    </div>
+</nav>

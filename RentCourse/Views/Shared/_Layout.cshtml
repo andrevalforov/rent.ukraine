@@ -8,55 +8,86 @@
     <title>@ViewData["Title"] - rent.ukraine</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size:1.1em;height:90px;color: #3e2622;background-image:url(https://stellationmedia.com/wp-content/uploads/2016/06/White-Geometric-Background-White-Geometric-Background-01.png) !important">
+    <style>
+        body{
+            font-family:sans-serif;
+        }
+        .button .label {
+            font-family: sans-serif;
+            font-weight: 600;
+            color: #2acdc1;
+            font-size: 1.2em;
+            line-height: 110%;
+            /*letter-spacing: 2px;*/
+            text-align: center;
+            text-transform: uppercase;
+            -webkit-transition: all .15s ease-out;
+            -moz-transition: all .15s ease-out;
+            -o-transition: all .15s ease-out;
+            transition: all .15s ease-out;
+            margin-right:1em;
+        }
+
+        .button:hover .label {
+            color:#ffffff;
+        }
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding-left:10%;padding-right:10%;font-size:1.1em;height:8%; background-image:url('https://pbs.twimg.com/media/EuitFHYXIAIJm2_?format=jpg&name=large'); background-size:cover">
         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-            <img style="height:80px" src="~/images/logotype.png" />
+            <img style="height:3.5em;margin-right:2em" src="~/images/rent-logo3.png" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarText">
+        <div class="collapse navbar-collapse" id="navbarText" style="position:center">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Product" asp-action="MainThings" asp-route-category="">Прокат речей</a>
+                    <a class="button nav-link" asp-controller="Product" asp-action="MainThings" asp-route-category="">
+                        <div class="label">
+                            Прокат речей
+                        </div>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Product" asp-action="MainRealEstate">Оренда нерухомості</a>
+                    <a class="button nav-link" asp-controller="Product" asp-action="MainRealEstate">
+                        <div class="label">
+                            Оренда нерухомості
+                        </div>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Product" asp-action="MainCars">Оренда автомобілів</a>
+                    <a class="button nav-link" asp-controller="Product" asp-action="MainCars">
+                        <div class="label">
+                            Оренда транспорту
+                        </div>
+                    </a>
                 </li>
             </ul>
-            <a asp-controller="Product" asp-action="AddProduct">
-                <button style="font-size:1em;margin:10px;color:#3e2622;border-color:#3e2622" id="addbtn" class="btn btn-outline-success my-2 my-sm-0">+ Подати оголошення</button>
-            </a>
+            @*<a asp-controller="Product" asp-action="AddProduct">
+                    <button style="font-size:1em;margin:10px;color:#3e2622;border-color:#3e2622" id="addbtn" class="btn btn-outline-success my-2 my-sm-0">+ Подати оголошення</button>
+                </a>*@
             <div class="dropdown">
-                <img class="dropbtn" style="margin:10px;height:30px;width:30px" src="~/images/img_165522.png"
-                     onmouseover="this.src='/images/img_165522invert.png'"
-                     onmouseout="this.src='/images/img_165522.png'" />
-                <div class="dropdown-content" id="accountdropdown">
+                <div class="button">
+                    <div class="label" style="font-size:2em;font-weight: 100;">≡</div>
+                </div>
+                @*<img class="dropbtn" style="margin:10px;height:30px;width:30px" src="~/images/img_165522.png"
+                    onmouseover="this.src='/images/img_165522invert.png'"
+                    onmouseout="this.src='/images/img_165522.png'" />*@
+                <div class="dropdown-content" style="font-weight:600; text-transform:uppercase;" id="accountdropdown">
                     @if (User.IsInRole("User"))
                     {
-                        <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Моя сторінка</a>
-                        <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Обране</a>
-                        <form method="post" asp-controller="Account" asp-action="Logout">
-                            <input class="nav-link text-dark" type="submit" value="Вихід"/>
+                        <a class="nav-link" asp-controller="Account" asp-action="" style="color:#2acdc1">Моя сторінка</a>
+                        <a class="nav-link" asp-controller="Product" asp-action="AddProduct" style="color:#2acdc1">Нове оголошення</a>
+                        <a class="nav-link" asp-controller="Account" asp-action="" style="color:#2acdc1">Обране</a>
+                        <form method="post" asp-controller="Account" asp-action="Logout" style="color:#2acdc1">
+                            <input class="nav-link" type="submit" value="Вихід" />
                         </form>
                     }
                     else
                     {
-                        <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Вхід</a>
-                        <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Реєстрація</a>
+                        <a class="nav-link" asp-controller="Account" asp-action="Login" style="color:#2acdc1">Вхід</a>
+                        <a class="nav-link" asp-controller="Account" asp-action="Register" style="color:#2acdc1">Реєстрація</a>
                     }
-                </div>
-            </div>
-            <div class="dropdown">
-                <img class="dropbtn" style="margin:10px;height:30px;" src="~/images/img_412122.png"
-                     onmouseover="this.src='/images/img_412122invert.png'"
-                     onmouseout="this.src='/images/img_412122.png'" />
-                <div class="dropdown-content">
-                    <a href="#">Русский</a>
-                    <a href="#">English</a>
                 </div>
             </div>
         </div>
@@ -66,52 +97,25 @@
 
     <div class="d-flex justify-content-between">
 
-        @await Component.InvokeAsync("Category")
+        @*@await Component.InvokeAsync("Category")*@
 
-        <div class="container">
-            <main role="main">
+        <div class="container" style="margin-left:7%;margin-right:7%;max-width:9999px">
+            <main role="main" style="width:100%">
                 @RenderBody()
             </main>
         </div>
     </div>
 
     <div style="width:100%;position:absolute">
-        <footer class="page-footer bg-light" style="font-size:1em;padding-top:10px;width:auto;padding-bottom:10px;color:#3e2622;background-image:url(https://stellationmedia.com/wp-content/uploads/2016/06/White-Geometric-Background-White-Geometric-Background-01.png) !important">
-            <div class="d-flex flex-sm-column flex-lg-row justify-content-around">
-                <ul>
-                    <li>
-                        <a class="flink" asp-controller="Home" asp-action="Index">Головна</a>
-                    </li>
-                    <li>
-                        <a class="flink" asp-controller="Product" asp-action="MainThings">Прокат речей</a>
-                    </li>
-                    <li>
-                        <a class="flink" asp-controller="Product" asp-action="MainRealEstate">Оренда нерухомості</a>
-                    </li>
-                    <li>
-                        <a class="flink" asp-controller="Product" asp-action="MainCars">Оренда автомобілів</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <a class="flink" href="#">Blog</a>
-                    </li>
-                    <li>
-                        <a class="flink" href="#">FAQ</a>
-                    </li>
-                    <li>
-                        <a class="flink" href="#">Політика конфіденційності</a>
-                    </li>
-                </ul>
+        <footer class="page-footer bg-light" style="padding:2em;height:8em;background-image:url('https://pbs.twimg.com/media/EuitFHYXIAIJm2_?format=jpg&name=large')">
+            <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+                <label style="font-size:2em; color:#2acdc1; font-weight:600; font-family: sans-serif;">RENT.UKRAINE |</label>
+                <label style="font-size:1.3em; color:#2acdc1; margin-left:0.5em; font-weight:600; font-family: sans-serif;">Powered by Andrew Alforov.</label>
             </div>
-            <div class="container body-content" style="display:flex;justify-content:center">
-                <a href="https://www.instagram.com/rent.ukraine/"><img style="margin:2px" class="icon" src="~/images/insta.png"></a>
-                <img style="margin:2px" class="icon" src="~/images/yt.png">
-                <img style="margin:2px" class="icon" src="~/images/fb.png">
+            <div style="display:flex; flex-direction:row; justify-content:space-between; align-items:center;">
+                <label style="color: #D0C7BE">Privacy Policy | Terms of Use</label>
+                <label style="color: #D0C7BE">© 2021-2022 rentukraine.com</label>
             </div>
-            <hr>
-            <p style="text-align:center;font-size:1em">&copy; 2020 - rent.ukraine</p>
-            <p style="text-align:center;font-size:1em">Усі права захищено</p>
         </footer>
     </div>
 
