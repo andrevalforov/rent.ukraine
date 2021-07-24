@@ -1,10 +1,15 @@
-﻿<div class="col mb-4">
-    <div class="card">
+﻿<style>
+    .card:hover {
+        box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+    }
+</style>
+<div class="col mb-4" >
+    <div class="card" style="margin:2em;padding:2em;border:0.3em solid #04049d; border-radius:0;">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">@Model.Title</h5>
-            <h6 class="card-text">@Model.Price грн.</h6>
-            <p class="card-text">@Model.Description</p>
+            <h5 class="card-title" style="font-family: sans-serif; font-weight: 600; color: #2acdc1; font-size: 2em; line-height: 110%; letter-spacing: 2px; text-transform: uppercase; ">@Model.Title</h5>
+            <label style="font-size:1.5em;font-family: sans-serif; font-weight: 600; line-height: 110%; letter-spacing: 2px; text-transform: uppercase;" class="card-text">@Model.Price грн.</label>
+            <p style="font-style:italic;" class="card-text">@Model.Description</p>
         </div>
     </div>
 </div>

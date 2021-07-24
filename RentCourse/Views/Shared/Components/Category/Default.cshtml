@@ -1,40 +1,59 @@
 ﻿<style>
-    nav{
-        font-family:sans-serif;
+    nav {
+        font-family: sans-serif;
     }
+
     a {
         color: #04049d;
         text-decoration: none;
     }
-    li input{
-        border-color:#04049d;
-        border-width:2px;
+
+    li input {
+        border-color: #04049d;
+        border-width: 2px;
     }
-    li label{
-        color:#04049d;
-        font-family:sans-serif;
+
+    li label {
+        color: #04049d;
+        font-family: sans-serif;
     }
 </style>
-<nav id="sidebar" style="
-        width: 20%;
-        padding: 30px;
-        border-right: 3px solid #04049d !important;
-        background-image: url('https://pbs.twimg.com/media/EuxzjKNWQAUSiYC?format=jpg&name=large');
-        background-size: cover;">
-    <div class="label" style="font-family:sans-serif; color:#04049d; font-size:2em; text-transform:uppercase; font-weight:600">Фільтри</div>
+<nav id="sidebar" style="        width: 25%;
+        padding: 2em;
+        margin: 2em;
+        border: 0.3em dashed #04049d;
+        /*        background-image: url('https://pbs.twimg.com/media/EuxzjKNWQAUSiYC?format=jpg&name=large');
+*/ background-size: cover;">
+    <div class="label" style="font-family:sans-serif; color:#2acdc1; font-size:3em; text-transform:uppercase; font-weight:600">Фільтри</div>
     <form>
-        <input class="form-control mr-sm-2" type="search" placeholder="ПОШУК" style="border-width:2px;border-color:#04049d" aria-label="Search">
+        <input class="form-control mr-sm-2" type="search" placeholder="ПОШУК" style="border-width:2px;border-color:#04049d;margin-bottom:2em;margin-top:2em" aria-label="Search">
         <ul class="list-unstyled components mb-5">
             <li>
                 <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="text-transform: uppercase; font-weight: 600; font-family:sans-serif">Категорія</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu1">
                     @foreach (var category in Model.Categories)
                     {
-                        
-                        <li>
-                            <input name="category" type="radio" id="@category.Name" value="@category.Name"/>
-                            <label for="@category.Name">@category.Name</label>
-                        </li>
+                        if (ViewData["Title"].ToString() == "MainThings" && category.TypeId == 3)
+                        {
+                            <li>
+                                <input name="category" type="radio" id="@category.Name" value="@category.Name" />
+                                <label for="@category.Name">@category.Name</label>
+                            </li>
+                        }
+                        else if (ViewData["Title"].ToString() == "MainRealEstate" && category.TypeId == 2)
+                        {
+                            <li>
+                                <input name="category" type="radio" id="@category.Name" value="@category.Name" />
+                                <label for="@category.Name">@category.Name</label>
+                            </li>
+                        }
+                        else if (ViewData["Title"].ToString() == "MainCars" && category.TypeId == 1)
+                        {
+                            <li>
+                                <input name="category" type="radio" id="@category.Name" value="@category.Name" />
+                                <label for="@category.Name">@category.Name</label>
+                            </li>
+                        }
                     }
                 </ul>
             </li>
@@ -54,8 +73,9 @@
                 <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="text-transform: uppercase; font-weight: 600; font-family:sans-serif">Ціна</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu3">
                     <li style="display:flex;flex-direction:column">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Мінімальна ціна" aria-label="MinPrice" style="margin-bottom:0.5em"/>
-                    <input class="form-control mr-sm-2" type="text" placeholder="Максимальна ціна" aria-label="MaxPrice" /></li>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Мінімальна ціна" aria-label="MinPrice" style="margin-bottom:0.5em" />
+                        <input class="form-control mr-sm-2" type="text" placeholder="Максимальна ціна" aria-label="MaxPrice" />
+                    </li>
                 </ul>
             </li>
             <li>
@@ -74,6 +94,7 @@
                 </ul>
             </li>
             <li style="display:flex;justify-content:center">
+
                 <button type="submit" style="font-size:1em;font-family:sans-serif;font-weight:600;margin-top:1em !important;color:#04049d;border-color:#04049d;border-width:2px" id="addbtn" class="btn btn-outline-success">ШУКАТИ</button>
             </li>
         </ul>
