@@ -68,20 +68,24 @@
                     <button style="font-size:1em;margin:10px;color:#3e2622;border-color:#3e2622" id="addbtn" class="btn btn-outline-success my-2 my-sm-0">+ Подати оголошення</button>
                 </a>*@
             <div class="dropdown">
-                <div class="button">
-                    <div class="label" style="font-size:2em;font-weight: 100;">≡</div>
+                <div class="button" style="display:flex;">
+                    @if (User.IsInRole("User"))
+                    {
+                        <label class="label">Привіт, @User.Identity.Name</label>
+                    }
+                    else
+                    {
+                        <div class="label" style="font-size:2em;font-weight: 100;">≡</div>
+                    }
                 </div>
-                @*<img class="dropbtn" style="margin:10px;height:30px;width:30px" src="~/images/img_165522.png"
-                    onmouseover="this.src='/images/img_165522invert.png'"
-                    onmouseout="this.src='/images/img_165522.png'" />*@
                 <div class="dropdown-content" style="font-weight:600; text-transform:uppercase;border: 0.2em solid #04049d" id="accountdropdown">
                     @if (User.IsInRole("User"))
                     {
                         <a class="nav-link" asp-controller="Account" asp-action="" style="color:#2acdc1">Моя сторінка</a>
                         <a class="nav-link" asp-controller="Product" asp-action="AddProduct" style="color:#2acdc1">Нове оголошення</a>
                         <a class="nav-link" asp-controller="Account" asp-action="" style="color:#2acdc1">Обране</a>
-                        <form method="post" asp-controller="Account" asp-action="Logout" style="color:#2acdc1">
-                            <input class="nav-link" type="submit" value="Вихід" />
+                        <form method="post" asp-controller="Account" asp-action="Logout">
+                            <input class="nav-link" type="submit" value="Вихід" style="color:#2acdc1;font-weight:600; text-transform:uppercase; border:none; background:none" />
                         </form>
                     }
                     else
@@ -98,7 +102,7 @@
 
     <div class="d-flex justify-content-between">
 
-        @if (ViewData["Title"].ToString() != "Home Page")
+        @if (ViewData["Title"].ToString() == "MainCars" || ViewData["Title"].ToString() == "MainRealEstate" || ViewData["Title"].ToString() == "MainThings")
         {
             @await Component.InvokeAsync("Category");
         }

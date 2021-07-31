@@ -105,7 +105,7 @@ namespace RentCourse.Controllers
                 dbUser = new DbUser
                 {
                     Email = model.Email,
-                    UserName = model.Email,
+                    UserName = model.FirstName,
                     UserProfile = userProfile
                 };
 

@@ -14,82 +14,112 @@
 </head>
 <style>
     .regform {
-        height: 80%;
+        /*height: 100%;*/
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         vertical-align: central;
     }
+
+    h2, label {
+        font-family: sans-serif;
+        font-weight: 600;
+        color: #04049d;
+        text-transform: uppercase;
+        line-height: 110%;
+        letter-spacing: 2px;
+    }
+
+    input, select {
+        border-width: 2px !important;
+        border-color: #04049d !important;
+        color: #04049d !important;
+    }
+
+    .btn-outline-dark:hover {
+        background: #04049d !important;
+        color: #ffffff !important;
+    }
+
+    td div {
+        margin-bottom: 1em;
+    }
 </style>
-<body style="background-image:url(https://stellationmedia.com/wp-content/uploads/2016/06/White-Geometric-Background-White-Geometric-Background-01.png)">
+<body style="background-image: url(https://pbs.twimg.com/media/EuxyjDgXIAEo4Ke?format=jpg&name=large)">
 
     <a asp-controller="Home" asp-action="Index">
-        <button style="border-radius:25px;height:50px;width:50px; border-color:#3e2622;border-width:1px;background:none;margin-top:10px;margin-left:10px;">
-            <img src="~/images/Streamline-18-512.png" style="height:30px;width:30px" />
+        <button style="border-radius:25px;height:50px;width:50px; border-color:#04049d;border-width:1px;background:none;margin-top:10px;margin-left:10px;">
+            <img src="~/images/home-button.png" style="height:30px;width:30px" />
         </button>
     </a>
     <form method="post" asp-controller="Product" asp-action="AddProduct" class="regform">
-        <table>
+        <table style="margin-left:7%;margin-right:7%">
             <tr>
-                <td style="padding-right:20px;min-width:60%">
-                    <h2>Подати оголошення</h2>
-                    <div asp-validation-summary="ModelOnly"></div>
-                    <div>
-                        <label asp-for="TypeId"></label><br />
-                        <p>
-                            <select class="form-control" asp-for="TypeId">
-                                <option value="1">Прокат речей</option>
-                                <option value="2">Оренда нерухомості</option>
-                                <option value="3">Оренда авто</option>
-                            </select>
-                        </p>
-                        <span asp-validation-for="TypeId"></span>
-                    </div>
-                    <div>
-                        <label asp-for="CategotyId"></label><br />
-                        <select class="form-control" asp-for="CategotyId">
-                            @*@foreach (var category in Model)
-                            {
-                                
-                                    <option value="@category.Id">@category.Name</option>
-                                
-                            }*@
-                        </select>
-                        <span asp-validation-for="CategotyId"></span>
-                    </div>
-                    <div>
-                        <label asp-for="Title"></label><br />
-                        <input type="text" class="form-control" asp-for="Title" />
-                        <span asp-validation-for="Title"></span>
-                    </div>
-                    <div>
-                        <label asp-for="Description"></label><br />
-                        <input type="text" class="form-control" asp-for="Description" />
-                        <span asp-validation-for="Description"></span>
-                    </div>
-                    <div>
-                        <label asp-for="Price"></label><br />
-                        <input type="number" class="form-control" asp-for="Price" />
-                        <span asp-validation-for="Price"></span>
-                    </div>
-                    <div>
-                        <label asp-for="LocationId"></label><br />
-                        <select class="form-control" asp-for="LocationId"></select>
-                        <span asp-validation-for="LocationId"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="ImageName"></label>
-                        @*<input asp-for="Image" />*@
-                        <input class="form-control" type="file" name="uploadedFile" />
-                        <span asp-validation-for="ImageName" />
-                    </div>
-                    <div>
-                        <input style="margin:5px;font-size:21px" type="submit" class="btn btn-outline-dark" value="Подати" />
+                <td style="width:50%">
+                    <div style="display:flex;flex-direction: column;justify-content: center;align-items: center;padding: 5em">
+                        <div style="display:flex;justify-content:center;margin-bottom:0">
+                            <label style="color:#2acdc1; font-size:3em; text-align:center">Нове оголошення</label>
+                        </div>
+                        <div style="width:100%;display:flex;justify-content:center;flex-direction:column">
+                            <div asp-validation-summary="ModelOnly"></div>
+                            <div>
+                                <label asp-for="TypeId"></label><br />
+                                <p>
+                                    <select class="form-control" asp-for="TypeId">
+                                        <option value="1">Прокат речей</option>
+                                        <option value="2">Оренда нерухомості</option>
+                                        <option value="3">Оренда авто</option>
+                                    </select>
+                                </p>
+                                <span asp-validation-for="TypeId"></span>
+                            </div>
+                            <div>
+                                <label asp-for="CategotyId"></label><br />
+                                <select class="form-control" asp-for="CategotyId">
+                                    @*@foreach (var category in Model)
+                                        {
+
+                                                <option value="@category.Id">@category.Name</option>
+
+                                        }*@
+                                </select>
+                                <span asp-validation-for="CategotyId"></span>
+                            </div>
+                            <div>
+                                <label asp-for="Title"></label><br />
+                                <input type="text" class="form-control" asp-for="Title" />
+                                <span asp-validation-for="Title"></span>
+                            </div>
+                            <div>
+                                <label asp-for="Description"></label><br />
+                                <input type="text" class="form-control" asp-for="Description" />
+                                <span asp-validation-for="Description"></span>
+                            </div>
+                            <div>
+                                <label asp-for="Price"></label><br />
+                                <input type="number" class="form-control" asp-for="Price" />
+                                <span asp-validation-for="Price"></span>
+                            </div>
+                            <div>
+                                <label asp-for="LocationId"></label><br />
+                                <select class="form-control" asp-for="LocationId"></select>
+                                <span asp-validation-for="LocationId"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ImageName"></label>
+                                @*<input asp-for="Image" />*@
+                                <input class="form-control" type="file" name="uploadedFile" />
+                                <span asp-validation-for="ImageName" />
+                            </div>
+                            <div style="display:flex;justify-content:center">
+                                <input style="font-size:1em;font-family:sans-serif;font-weight:600;margin-top:1em !important;color:#04049d;border-color:#04049d;border-width:2px;min-width:25%" type="submit" class="btn btn-outline-dark" value="СТВОРИТИ" />
+                            </div>
+                        </div>
                     </div>
                 </td>
-                <td style="border-left:1px solid #3e2622">
-                    <img src="~/images/logotype.png" height="200" />
+                <td style="border-left:0.3em solid #04049d; display:flex;justify-content:center;padding:2em">
+                    <img src="~/images/rent-logo3.png" style="width:100%" />
                 </td>
             </tr>
         </table>
@@ -98,4 +128,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="~/js/site.min.js" asp-append-version="true"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </body>

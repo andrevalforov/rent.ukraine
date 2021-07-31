@@ -14,18 +14,21 @@
 </head>
 <style>
     .regform {
-        height: 80%;
+        /*height: 80%;*/
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         vertical-align: central;
     }
+
     h2, label {
         font-family: sans-serif;
         font-weight: 600;
         color: #04049d;
         text-transform: uppercase;
+        line-height: 110%;
+        letter-spacing: 2px;
     }
 
     input {
@@ -39,8 +42,8 @@
         color: #ffffff !important;
     }
 
-    td div{
-        margin-bottom:1em;
+    td div {
+        margin-bottom: 1em;
     }
 </style>
 <body style="background-image:url(https://pbs.twimg.com/media/EuxyjDgXIAEo4Ke?format=jpg&name=large)">
@@ -51,54 +54,62 @@
         </button>
     </a>
     <form method="post" asp-controller="Account" asp-action="Register" class="regform">
-        <table>
+        <table style="margin-left:7%;margin-right:7%">
             <tr>
-                <td style="padding-right:20px;min-width:50%">
-                    <div style="display:flex;justify-content:center;margin-bottom:0">
-                        <h2 style="color:#2acdc1">Реєстрація нового користувача</h2>
-                    </div>
-                    <div asp-validation-summary="ModelOnly"></div>
-                    <div>
-                        <label asp-for="LastName"></label><br />
-                        <input type="text" class="form-control" asp-for="LastName" />
-                        <span asp-validation-for="LastName"></span>
-                    </div>
-                    <div>
-                        <label asp-for="FirstName"></label><br />
-                        <input type="text" class="form-control" asp-for="FirstName" />
-                        <span asp-validation-for="FirstName"></span>
-                    </div>
-                    <div>
-                        <label asp-for="MiddleName"></label><br />
-                        <input type="text" class="form-control" asp-for="MiddleName" />
-                        <span asp-validation-for="MiddleName"></span>
-                    </div>
-                    <div>
-                        <label asp-for="Email"></label><br />
-                        <input type="email" class="form-control" asp-for="Email" />
-                        <span asp-validation-for="Email"></span>
-                    </div>
-                    <div>
-                        <label asp-for="PhoneNumber"></label><br />
-                        <input type="tel" class="form-control" asp-for="PhoneNumber" />
-                        <span asp-validation-for="PhoneNumber"></span>
-                    </div>
-                    <div>
-                        <label asp-for="Password"></label><br />
-                        <input type="password" class="form-control" asp-for="Password" />
-                        <span asp-validation-for="Password"></span>
-                    </div>
-                    <div>
-                        <label asp-for="PasswordConfirm"></label><br />
-                        <input type="password" class="form-control" asp-for="PasswordConfirm" />
-                        <span asp-validation-for="PasswordConfirm"></span>
-                    </div>
-                    <div>
-                        <input style="margin:5px;font-size:21px" type="submit" class="btn btn-outline-dark" value="Зареєструватися" />
+                <td style="width:50%">
+                    <div style="display:flex;flex-direction: column;justify-content: center;align-items: center;padding: 5em">
+                        <div style="display:flex;justify-content:center;margin-bottom:0">
+                            <label style="color:#2acdc1; font-size:3em; text-align:center">Реєстрація</label>
+                        </div>
+                        <div style="width:100%;display:flex;justify-content:center;flex-direction:column">
+                            <div asp-validation-summary="ModelOnly"></div>
+                            <div>
+                                <label asp-for="LastName"></label><br />
+                                <input type="text" class="form-control" asp-for="LastName" />
+                                <span asp-validation-for="LastName" />
+                            </div>
+                            <div>
+                                <label asp-for="FirstName"></label><br />
+                                <input type="text" class="form-control" asp-for="FirstName" />
+                                <span asp-validation-for="FirstName" />
+                            </div>
+                            <div>
+                                <label asp-for="MiddleName"></label><br />
+                                <input type="text" class="form-control" asp-for="MiddleName" />
+                                <span asp-validation-for="MiddleName" />
+                            </div>
+                            <div style="display:flex;justify-content:space-between">
+                                <div>
+                                    <label asp-for="Email"></label><br />
+                                    <input type="email" class="form-control" asp-for="Email" />
+                                    <span asp-validation-for="Email" />
+                                </div>
+                                <div>
+                                    <label asp-for="PhoneNumber"></label><br />
+                                    <input type="tel" class="form-control" asp-for="PhoneNumber" />
+                                    <span asp-validation-for="PhoneNumber" />
+                                </div>
+                            </div>
+                            <div style="display:flex;justify-content:space-between">
+                                <div>
+                                    <label asp-for="Password"></label><br />
+                                    <input type="password" class="form-control" asp-for="Password" />
+                                    <span asp-validation-for="Password" />
+                                </div>
+                                <div>
+                                    <label asp-for="PasswordConfirm"></label><br />
+                                    <input type="password" class="form-control" asp-for="PasswordConfirm" />
+                                    <span asp-validation-for="PasswordConfirm" />
+                                </div>
+                            </div>
+                            <div style="display:flex;justify-content:center">
+                                <input style="font-size:1em;font-family:sans-serif;font-weight:600;margin-top:1em !important;color:#04049d;border-color:#04049d;border-width:2px;min-width:25%" type="submit" class="btn btn-outline-dark" value="ЗАРЕЄСТРУВАТИСЯ" />
+                            </div>
+                        </div>
                     </div>
                 </td>
-                <td style="border-left:1px solid #04049d">
-                    <img src="~/images/rent-logo3.png" style="height:20em; margin-left:2em" />
+                <td style="border-left:0.3em solid #04049d; display:flex;justify-content:center;padding:2em">
+                    <img src="~/images/rent-logo3.png" style="width:100%" />
                 </td>
             </tr>
         </table>
@@ -107,4 +118,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="~/js/site.min.js" asp-append-version="true"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </body>
