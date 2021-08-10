@@ -1,0 +1,195 @@
+﻿@model RentCourse.ViewModels.PersonalPageViewModel
+
+@{
+    ViewData["Title"] = "My Page";
+}
+@{
+    Layout = "_Layout";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>@ViewData["Title"] - rent.ukraine</title>
+</head>
+<style>
+    .regform {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        vertical-align: central;
+    }
+
+    input {
+        border: 0.2em solid #04049d !important;
+        border-radius: 0 !important;
+        color: #04049d !important;
+        font-size: 1em !important;
+        font-family: sans-serif !important;
+        margin-right: 1em;
+        height: 3em !important;
+    }
+
+    .btn-outline-dark:hover {
+        background: #04049d !important;
+        color: #ffffff !important;
+    }
+
+    .data {
+        font-family: sans-serif;
+        color: #04049d;
+        font-size: 1.5em;
+    }
+
+    .title {
+        font-family: sans-serif;
+        font-weight: 600;
+        color: #04049d;
+        line-height: 110%;
+        font-size: 1.5em;
+        text-transform: uppercase;
+    }
+
+    img {
+        height: 1.5em;
+    }
+
+    tr td {
+        padding: 0.5em;
+    }
+
+    .btn {
+        font-size: 1em;
+        font-family: sans-serif;
+        font-weight: 600;
+        background: none;
+        color: #04049d;
+        border: 0.2em solid #04049d !important;
+        border-radius: 0 !important;
+        text-transform: uppercase
+    }
+</style>
+<body>
+    <div style="margin:7%; display:flex;flex-direction:row;align-items:center">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+            @if (Model.UserProfile.Image != null)
+            {
+                <img style="border: 0.2em solid #04049d; width:50%; height:auto;" src="/Files/@Model.UserProfile.Image" />
+            }
+            else
+            {
+                <img style="border: 0.2em solid #04049d; width:50%; height:auto;" src="~/images/86446-200.png" />
+            }
+            @*<button style="margin: 1em" class="btn btn-outline-dark">Змінити фото</button>
+            <input class="form-control" type="file" name="uploadedFile" />*@
+        </div>
+        <table>
+            <tr>
+                <td>
+                    <label class="title">Ім'я:</label>
+                </td>
+                <td>
+                    <label class="data">@Model.UserProfile.FirstName</label>
+                </td>
+                <td>
+                    <a id="firstnameedit" data-toggle="tooltip" title="Змінити" onclick="document.getElementById('edit').style.visibility='visible'"><img src="~/images/61456.png" /></a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="title">Прізвище:</label>
+                </td>
+                <td>
+                    <label class="data">@Model.UserProfile.LastName</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="title">Email:</label>
+                </td>
+                <td>
+                    @if (Model.User.EmailConfirmed == true)
+                    {
+                        <label class="data">@Model.UserProfile.Email</label>
+                    }
+                    else
+                    {
+                        <label class="data" style="color:#ff0000" data-toggle="tooltip" title="Email не підтверджено">@Model.UserProfile.Email</label>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="title">Номер телефону:</label>
+                </td>
+                <td>
+                    @if (!Model.UserProfile.PhoneNumber.StartsWith("+38"))
+                    {
+                        <label class="data">+38 @Model.UserProfile.PhoneNumber</label>
+                    }
+                    else
+                    {
+                        <label class="data">@Model.UserProfile.PhoneNumber</label>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="title">Дата реєстрації:</label>
+                </td>
+                <td>
+                    <label class="data">@Model.UserProfile.RegistrationDate.ToShortDateString()</label>
+                </td>
+            </tr>
+        </table>
+        <form id="edit" style="visibility:hidden" method="post" asp-controller="Account" asp-action="PersonalPage" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly"></div>
+            <table>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" asp-for="FName" value="@Model.UserProfile.FirstName" />
+                        <span asp-validation-for="FName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" asp-for="LName" value="@Model.UserProfile.LastName" />
+                        <span asp-validation-for="LName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" asp-for="Email" value="@Model.UserProfile.Email" />
+                        <span asp-validation-for="Email" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" asp-for="PhoneNumber" value="@Model.UserProfile.PhoneNumber" />
+                        <span asp-validation-for="PhoneNumber" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="file" class="form-control" name="uploadedFile"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit" class="btn btn-outline-dark">Змінити</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>

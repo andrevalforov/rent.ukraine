@@ -81,11 +81,11 @@
                 <div class="dropdown-content" style="font-weight:600; text-transform:uppercase;border: 0.2em solid #04049d" id="accountdropdown">
                     @if (User.IsInRole("User"))
                     {
-                        <a class="nav-link" asp-controller="Account" asp-action="" style="color:#2acdc1">Моя сторінка</a>
+                        <a class="nav-link" asp-controller="Account" asp-action="PersonalPage" style="color:#2acdc1">Моя сторінка</a>
                         <a class="nav-link" asp-controller="Product" asp-action="AddProduct" style="color:#2acdc1">Нове оголошення</a>
                         <a class="nav-link" asp-controller="Account" asp-action="" style="color:#2acdc1">Обране</a>
                         <form method="post" asp-controller="Account" asp-action="Logout">
-                            <input class="nav-link" type="submit" value="Вихід" style="color:#2acdc1;font-weight:600; text-transform:uppercase; border:none; background:none" />
+                            <input class="nav-link" type="submit" value="Вихід" style="color:#2acdc1 !important;font-weight:600 !important; text-transform:uppercase !important; border:none !important; background:none !important" />
                         </form>
                     }
                     else
@@ -118,7 +118,7 @@
         <footer class="page-footer bg-light" style="padding:2em;height:8em;background-image:url('https://pbs.twimg.com/media/EuitFHYXIAIJm2_?format=jpg&name=large')">
             <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
                 <label style="font-size:2em; color:#2acdc1; font-weight:600; font-family: sans-serif;">RENT.UKRAINE |</label>
-                <label style="font-size:1.3em; color:#2acdc1; margin-left:0.5em; font-weight:600; font-family: sans-serif;">Powered by Andrew Alforov.</label>
+                <label style="font-size:1.3em; color:#2acdc1; margin-left:0.5em; font-weight:600; font-family: sans-serif;">Powered by Andrew Alforov</label>
             </div>
             <div style="display:flex; flex-direction:row; justify-content:space-between; align-items:center;">
                 <label style="color: #D0C7BE">Privacy Policy | Terms of Use</label>

@@ -53,7 +53,7 @@
             <img src="~/images/home-button.png" style="height:30px;width:30px" />
         </button>
     </a>
-    <form method="post" asp-controller="Product" asp-action="AddProduct" class="regform">
+    <form method="post" asp-controller="Product" asp-action="AddProduct" class="regform" enctype="multipart/form-data">
         <table style="margin-left:7%;margin-right:7%">
             <tr>
                 <td style="width:50%">
@@ -66,7 +66,7 @@
                             <div>
                                 <label asp-for="TypeId"></label><br />
                                 <p>
-                                    <select class="form-control" asp-for="TypeId">
+                                    <select id="type" class="form-control" asp-for="TypeId">
                                         <option value="1">Прокат речей</option>
                                         <option value="2">Оренда нерухомості</option>
                                         <option value="3">Оренда авто</option>
@@ -76,12 +76,39 @@
                             </div>
                             <div>
                                 <label asp-for="CategotyId"></label><br />
+                                @*<script>
+                                        HTMLSelectElement typeselect = document.getElementById("type");
+                                        var typ = typeselect.value;
+
+                                        if (typ == 1) {
+
+                                        }
+                                    </script>*@
                                 <select class="form-control" asp-for="CategotyId">
-                                    @*@foreach (var category in Model)
+                                    @foreach (var category in Model.GetCategories)
+                                    {
+                                        <option value="@category.Id">@category.Name</option>
+                                    }
+                                    @*@if (typ == 1)
                                         {
-
+                                            @foreach (var category in Model.GetCategories.Where(x => x.TypeId == 1))
+                                            {
                                                 <option value="@category.Id">@category.Name</option>
-
+                                            }
+                                        }
+                                        else if (Model.TypeId == 2)
+                                        {
+                                            @foreach (var category in Model.GetCategories.Where(x => x.TypeId == 2))
+                                            {
+                                                <option value="@category.Id">@category.Name</option>
+                                            }
+                                        }
+                                        else/* if (Model.TypeId == 3)*/
+                                        {
+                                            @foreach (var category in Model.GetCategories.Where(x => x.TypeId == 3))
+                                            {
+                                                <option value="@category.Id">@category.Name</option>
+                                            }
                                         }*@
                                 </select>
                                 <span asp-validation-for="CategotyId"></span>
@@ -103,7 +130,14 @@
                             </div>
                             <div>
                                 <label asp-for="LocationId"></label><br />
-                                <select class="form-control" asp-for="LocationId"></select>
+                                <select class="form-control" asp-for="LocationId">
+                                    @foreach (var location in Model.GetLocations)
+                                    {
+
+                                        <option value="@location.Id">@location.City</option>
+
+                                    }
+                                </select>
                                 <span asp-validation-for="LocationId"></span>
                             </div>
                             <div class="form-group">

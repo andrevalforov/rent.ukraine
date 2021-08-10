@@ -1,4 +1,6 @@
 ﻿using RentCourse.Data.EFContext;
+using RentCourse.Data.Models;
+using RentCourse.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -36,6 +38,12 @@ namespace RentCourse.ViewModels
         [Display(Name = "Фото товару")]
         public string ImageName { get; set; }
 
+        public FileModel fileModel { get; set; }
+
         public Components.Mod mod { get; set; }
+
+        public IEnumerable<Category> GetCategories { get; set; }
+        
+        public IEnumerable<Location> GetLocations { get; set; }
     }
 }

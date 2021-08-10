@@ -33,7 +33,7 @@
                 <ul class="collapse list-unstyled" id="pageSubmenu1">
                     @foreach (var category in Model.Categories)
                     {
-                        if (ViewData["Title"].ToString() == "MainThings" && category.TypeId == 3)
+                        if (ViewData["Title"].ToString() == "MainThings" && category.TypeId == 1)
                         {
                             <li>
                                 <input name="category" type="radio" id="@category.Name" value="@category.Name" />
@@ -47,7 +47,7 @@
                                 <label for="@category.Name">@category.Name</label>
                             </li>
                         }
-                        else if (ViewData["Title"].ToString() == "MainCars" && category.TypeId == 1)
+                        else if (ViewData["Title"].ToString() == "MainCars" && category.TypeId == 3)
                         {
                             <li>
                                 <input name="category" type="radio" id="@category.Name" value="@category.Name" />

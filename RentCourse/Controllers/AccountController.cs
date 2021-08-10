@@ -12,6 +12,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using RentCourse.Services;
+using Microsoft.AspNetCore.Authorization;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+using RentCourse.Models;
 
 namespace RentCourse.Controllers
 {
@@ -21,16 +25,18 @@ namespace RentCourse.Controllers
         private readonly SignInManager<DbUser> _signInManager;
         private readonly RoleManager<DbRole> _roleManager;
         private readonly EFDbContext _context;
+        private readonly IHostingEnvironment _env;
         public DbUser ActiveUser = null;
         private DbUser dbUser;
 
         public AccountController(UserManager<DbUser> userManager, SignInManager<DbUser> signInManager,
-            RoleManager<DbRole> roleManager, EFDbContext context)
+            RoleManager<DbRole> roleManager, EFDbContext context, IHostingEnvironment env)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _context = context;
+            _env = env;
         }
         [HttpGet]
         public IActionResult Login()
@@ -63,6 +69,7 @@ namespace RentCourse.Controllers
 
             await Authenticate(model.Email);
             ActiveUser = dbUser;
+            //dbUser.UserProfile = _context.UserProfile.FirstOrDefault(x => x.Id == user.Id);
             return RedirectToAction("Index", "Home");
         }
 
@@ -97,15 +104,15 @@ namespace RentCourse.Controllers
                     FirstName = model.FirstName,
                     MiddleName = model.MiddleName,
                     LastName = model.LastName,
-                    PhoneNumber=model.PhoneNumber,
+                    PhoneNumber = model.PhoneNumber,
                     RegistrationDate = DateTime.Now,
-                    Email=model.Email
+                    Email = model.Email
                 };
 
                 dbUser = new DbUser
                 {
                     Email = model.Email,
-                    UserName = model.FirstName,
+                    UserName = model.Email,
                     UserProfile = userProfile
                 };
 
@@ -133,6 +140,7 @@ namespace RentCourse.Controllers
 
         private async Task Authenticate(string userName)
         {
+            //ActiveUser = _context.Users.FirstOrDefault(x => x.UserName == userName);
             // создаем один claim
             var claims = new List<Claim>
             {
@@ -226,6 +234,59 @@ namespace RentCourse.Controllers
                 //    $" you should visit this link <a href='{url}'>press</a>");
             }
             return RedirectToAction("Login", "Account");
+        }
+
+        [HttpGet]
+        public IActionResult PersonalPage()
+        {
+            var id = _userManager.GetUserAsync(User).Result.Id;
+            //var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var profileObj = new PersonalPageViewModel
+            {
+                User = _context.Users.FirstOrDefault(u => u.Id == id),
+                UserProfile = _context.UserProfile.FirstOrDefault(x => x.Id == id)
+            };
+
+            return View(profileObj);
+        }
+
+        //[Authorize(Roles = "User")]
+        [HttpPost]
+        public async Task<IActionResult> PersonalPage(PersonalPageViewModel model, IFormFile uploadedFile)
+        {
+            if (uploadedFile != null && uploadedFile.Length > 0)
+            {
+                // путь к папке Files
+                string path = "/Files/" + uploadedFile.FileName;
+                // сохраняем файл в папку Files в каталоге wwwroot
+                using (var fileStream = new FileStream(_env.WebRootPath + path, FileMode.Create))
+                {
+                    await uploadedFile.CopyToAsync(fileStream);
+                }
+                FileModel file = new FileModel { Name = uploadedFile.FileName, Path = path };
+                _context.Files.Add(file);
+                _context.SaveChanges();
+            }
+            var id = _userManager.GetUserAsync(User).Result.Id;
+            var userprofile = _context.UserProfile.FirstOrDefault(u => u.Id == id);
+            if (uploadedFile != null)
+            {
+                userprofile.FirstName = model.FName;
+                userprofile.LastName = model.LName;
+                userprofile.Email = model.Email;
+                userprofile.PhoneNumber = model.PhoneNumber;
+                userprofile.Image = uploadedFile.FileName;
+                var result = await _userManager.UpdateAsync(userprofile.User);
+            }
+            else
+            {
+                userprofile.FirstName = model.FName;
+                userprofile.LastName = model.LName;
+                userprofile.Email = model.Email;
+                userprofile.PhoneNumber = model.PhoneNumber;
+                var result = await _userManager.UpdateAsync(userprofile.User);
+            }
+            return RedirectToAction("PersonalPage", "Account");
         }
     }
 }
