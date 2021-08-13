@@ -81,7 +81,7 @@ using RentCourse.Models;
     ");
             EndContext();
             BeginContext(732, 4544, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a5f0142a438c4c9fbfd1bd0c3a895761", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8e7984f04ede4cf3bfbf7b4e99f585b0", async() => {
                 BeginContext(738, 522, true);
                 WriteLiteral(@"
         <input class=""form-control mr-sm-2"" type=""search"" placeholder=""ПОШУК"" style=""border-width:2px;border-color:#04049d;margin-bottom:2em;margin-top:2em"" aria-label=""Search"">

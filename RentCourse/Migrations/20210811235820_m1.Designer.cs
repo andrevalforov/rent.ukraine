@@ -10,8 +10,8 @@ using RentCourse.Data.EFContext;
 namespace RentCourse.Migrations
 {
     [DbContext(typeof(EFDbContext))]
-    [Migration("20200313115814_m4")]
-    partial class m4
+    [Migration("20210811235820_m1")]
+    partial class m1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

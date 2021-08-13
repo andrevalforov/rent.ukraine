@@ -71,7 +71,7 @@
                 <div class="button" style="display:flex;">
                     @if (User.IsInRole("User"))
                     {
-                        <label class="label">Привіт, @User.Identity.Name</label>
+                        <label class="label">@User.Identity.Name</label>
                     }
                     else
                     {

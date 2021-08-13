@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RentCourse.Components;
 using RentCourse.Data.EFContext;
@@ -24,9 +25,11 @@ namespace RentCourse.Controllers
         private readonly ITypes _type;
         private readonly ILocations _location;
         private readonly EFDbContext _context;
+        private readonly UserManager<DbUser> _userManager;
 
-        public ProductController(IProducts products, ICategories category, ITypes type, IHostingEnvironment env, EFDbContext context, ILocations location)
+        public ProductController(IProducts products, ICategories category, ITypes type, IHostingEnvironment env, EFDbContext context, ILocations location, UserManager<DbUser> userManager)
         {
+            _userManager = userManager;
             _products = products;
             _category = category;
             _type = type;
@@ -176,8 +179,8 @@ namespace RentCourse.Controllers
                 products = _products.GetAllProducts
                     .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id)
                     .Where(x => x.Category.Name.ToLower() == category.ToLower())
-                    .Where(x => x.LocationId == _location.Locations.FirstOrDefault(a => a.City.ToLower() == location.ToLower()).Id);
-
+                    .Where(x => x.LocationId == _location.Locations.FirstOrDefault(a=>a.City.ToLower()==location.ToLower()).Id);
+                
                 productCategory = category;
                 productLocation = location;
             }
@@ -224,6 +227,8 @@ namespace RentCourse.Controllers
                     _context.Files.Add(file);
                     _context.SaveChanges();
                 }
+                var id = _userManager.GetUserAsync(User).Result.Id;
+                var userprof = _context.UserProfile.FirstOrDefault(x => x.Id == id);
                 Product product = new Product
                 {
                     Title = model.Title,
@@ -233,7 +238,8 @@ namespace RentCourse.Controllers
                     Available = true,
                     DateOfPublication = DateTime.Now,
                     LocationId = model.LocationId,
-                    UserId = user.Id,
+                    UserId = _userManager.GetUserAsync(User).Result.Id,
+                    User = userprof,
                     ViewCount = 0,
                     Image = uploadedFile.FileName,
                     Category = _category.Categories.FirstOrDefault(x => x.Id == model.CategotyId),

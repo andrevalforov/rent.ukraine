@@ -113,7 +113,8 @@ namespace RentCourse.Controllers
                 {
                     Email = model.Email,
                     UserName = model.Email,
-                    UserProfile = userProfile
+                    UserProfile = userProfile,
+                    PhoneNumber=model.PhoneNumber
                 };
 
                 var result = await _userManager.CreateAsync(dbUser, model.Password);

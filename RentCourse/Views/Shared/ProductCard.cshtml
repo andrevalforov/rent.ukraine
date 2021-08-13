@@ -1,15 +1,111 @@
-﻿<style>
+﻿@model RentCourse.Data.Models.Product
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<style>
     .card:hover {
         box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
     }
+
+    h5 {
+        font-family: sans-serif;
+        font-weight: 600;
+        color: #2acdc1;
+        font-size: 2em;
+        text-transform: uppercase;
+    }
+
+    label {
+        font-family: sans-serif;
+        font-weight: 600;
+    }
+
+    .btn {
+        font-size: 1em;
+        font-family: sans-serif;
+        font-weight: 600;
+        background: none;
+        color: #04049d;
+        border: 0.2em solid #04049d !important;
+        border-radius: 0 !important;
+        text-transform: uppercase
+    }
+
+    .btn-outline-dark:hover {
+        background: #04049d !important;
+        color: #ffffff !important;
+    }
 </style>
-<div class="col mb-4" >
+<div class="col mb-4">
     <div class="card" style="margin:2em;padding:2em;border:0.3em solid #04049d; border-radius:0;">
         <img src="/Files/@Model.Image" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title" style="font-family: sans-serif; font-weight: 600; color: #2acdc1; font-size: 2em; line-height: 110%; letter-spacing: 2px; text-transform: uppercase; ">@Model.Title</h5>
-            <label style="font-size:1.5em;font-family: sans-serif; font-weight: 600; line-height: 110%; letter-spacing: 2px; text-transform: uppercase;" class="card-text">@Model.Price грн.</label>
-            <p style="font-style:italic;" class="card-text">@Model.Description</p>
+            <h5 class="card-title">@Model.Title</h5>
+            <div style="display:flex; justify-content:space-between;align-items:center">
+                <label style="font-size:1.5em;font-family: sans-serif; font-weight: 600; line-height: 110%; letter-spacing: 2px; text-transform: uppercase;" class="card-text">@Model.Price грн.</label>
+                @*<p style="font-style:italic;" class="card-text">@Model.Description</p>*@
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#productModal">
+                    Переглянути
+                </button>
+            </div>
         </div>
     </div>
 </div>
+@*@inject Microsoft.AspNetCore.Identity.SignInManager<RentCourse.Data.EFContext.DbUser> _signInManager;
+@inject Microsoft.AspNetCore.Identity.UserManager<RentCourse.Data.EFContext.DbUser> _userManager;*@
+@inject RentCourse.Data.EFContext.EFDbContext _context;
+<!-- Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true" style="--bs-gutter-x: 0;">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="productModalLabel" style="text-align:center; width:100%;font-size:3em">@Model.Title</h5>
+                <button type="button" style="color:#04049d; font-size:3em; border:none !important" class="btn" data-bs-dismiss="modal" aria-label="Close">×</button>
+            </div>
+            <div class="modal-body" style="display:flex">
+                <div style="width:50%;display:flex;align-items:center; margin-right:1em">
+                    <img style="width:100%" src="/Files/@Model.Image" />
+                </div>
+                <div style="display:flex;flex-direction:column; width:50%">
+                    <div style="display:flex; justify-content:space-between">
+                        <label style="text-transform: uppercase;">@_context.Locations.FirstOrDefault(x => x.Id == Model.LocationId).City область</label>
+                        <label style="text-transform: uppercase;">@_context.Categories.FirstOrDefault(x => x.Id == Model.CategoryId).Name</label>
+                    </div>
+                    <label style="font-size:3em; letter-spacing: 2px; text-transform: uppercase; color:#04049d; margin-top:1em">@Model.Price грн.</label>
+                    <label style="font-size:2em; text-transform: uppercase; margin-top:1em">Опис:</label>
+                    <label style="font-size:1.5em">@Model.Description</label>
+                    <label style="font-size: 1em; text-transform: uppercase; margin-top:3em">Опубліковано: @Model.DateOfPublication.ToShortDateString()</label>
+                    <label style="font-size:1em; text-transform: uppercase; margin-bottom:3em">Переглядів: @Model.ViewCount</label>
+                    <div style="border: 0.3em solid #04049d;display:flex;padding:2em">
+                        <div style="margin-right:2em">
+                            @if (_context.UserProfile.FirstOrDefault(x => x.Email == User.Identity.Name).Image != null)
+                            {
+                                <img src="/Files/@_context.UserProfile.FirstOrDefault(x => x.Email == User.Identity.Name).Image"
+                                     style="border-radius:100%; height:5em; width:auto" />
+                            }
+                            else
+                            {
+                                <img src="/images/86446-200reverse.png"
+                                     style="border-radius:100%; height:5em; width:auto" />
+                            }
+                        </div>
+                        <div style="display:flex; flex-direction:column">
+                            <label style="font-size: 2em; text-transform: uppercase;">@_context.UserProfile.FirstOrDefault(x => x.Email == User.Identity.Name).FirstName</label>
+                            <label style="text-transform: uppercase;">На RentUkraine з @_context.UserProfile.FirstOrDefault(x => x.Email == User.Identity.Name).RegistrationDate.ToShortDateString()</label>
+                            <label style="font-size:1.5em; color:#04049d">@_context.UserProfile.FirstOrDefault(x => x.Email == User.Identity.Name).PhoneNumber</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-dark">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>

@@ -72,117 +72,120 @@
     }
 </style>
 <body>
-    <div style="margin:7%; display:flex;flex-direction:row;align-items:center">
-        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center">
-            @if (Model.UserProfile.Image != null)
-            {
-                <img style="border: 0.2em solid #04049d; width:50%; height:auto;" src="/Files/@Model.UserProfile.Image" />
-            }
-            else
-            {
-                <img style="border: 0.2em solid #04049d; width:50%; height:auto;" src="~/images/86446-200.png" />
-            }
-            @*<button style="margin: 1em" class="btn btn-outline-dark">Змінити фото</button>
-            <input class="form-control" type="file" name="uploadedFile" />*@
-        </div>
-        <table>
-            <tr>
-                <td>
-                    <label class="title">Ім'я:</label>
-                </td>
-                <td>
-                    <label class="data">@Model.UserProfile.FirstName</label>
-                </td>
-                <td>
-                    <a id="firstnameedit" data-toggle="tooltip" title="Змінити" onclick="document.getElementById('edit').style.visibility='visible'"><img src="~/images/61456.png" /></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="title">Прізвище:</label>
-                </td>
-                <td>
-                    <label class="data">@Model.UserProfile.LastName</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="title">Email:</label>
-                </td>
-                <td>
-                    @if (Model.User.EmailConfirmed == true)
-                    {
-                        <label class="data">@Model.UserProfile.Email</label>
-                    }
-                    else
-                    {
-                        <label class="data" style="color:#ff0000" data-toggle="tooltip" title="Email не підтверджено">@Model.UserProfile.Email</label>
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="title">Номер телефону:</label>
-                </td>
-                <td>
-                    @if (!Model.UserProfile.PhoneNumber.StartsWith("+38"))
-                    {
-                        <label class="data">+38 @Model.UserProfile.PhoneNumber</label>
-                    }
-                    else
-                    {
-                        <label class="data">@Model.UserProfile.PhoneNumber</label>
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="title">Дата реєстрації:</label>
-                </td>
-                <td>
-                    <label class="data">@Model.UserProfile.RegistrationDate.ToShortDateString()</label>
-                </td>
-            </tr>
-        </table>
-        <form id="edit" style="visibility:hidden" method="post" asp-controller="Account" asp-action="PersonalPage" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly"></div>
+    <div style="margin:7%;">
+        <label class="title" style="font-size:3em;text-align:center;">Привіт, @Model.UserProfile.FirstName</label>
+        <div style=" display: flex; flex-direction: row; align-items: center">
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+                @if (Model.UserProfile.Image != null)
+                {
+                    <img style="border: 0.2em solid #04049d; width:50%; height:auto;" src="/Files/@Model.UserProfile.Image" />
+                }
+                else
+                {
+                    <img style="border: 0.2em solid #04049d; width:50%; height:auto;" src="~/images/86446-200.png" />
+                }
+                @*<button style="margin: 1em" class="btn btn-outline-dark">Змінити фото</button>
+                    <input class="form-control" type="file" name="uploadedFile" />*@
+            </div>
             <table>
                 <tr>
                     <td>
-                        <input type="text" class="form-control" asp-for="FName" value="@Model.UserProfile.FirstName" />
-                        <span asp-validation-for="FName" />
+                        <label class="title">Ім'я:</label>
+                    </td>
+                    <td>
+                        <label class="data">@Model.UserProfile.FirstName</label>
+                    </td>
+                    <td>
+                        <a id="firstnameedit" data-toggle="tooltip" title="Змінити" onclick="document.getElementById('edit').style.visibility='visible'"><img src="~/images/61456.png" /></a>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" class="form-control" asp-for="LName" value="@Model.UserProfile.LastName" />
-                        <span asp-validation-for="LName" />
+                        <label class="title">Прізвище:</label>
+                    </td>
+                    <td>
+                        <label class="data">@Model.UserProfile.LastName</label>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" class="form-control" asp-for="Email" value="@Model.UserProfile.Email" />
-                        <span asp-validation-for="Email" />
+                        <label class="title">Email:</label>
+                    </td>
+                    <td>
+                        @if (Model.User.EmailConfirmed == true)
+                        {
+                            <label class="data">@Model.UserProfile.Email</label>
+                        }
+                        else
+                        {
+                            <label class="data" style="color:#ff0000" data-toggle="tooltip" title="Email не підтверджено">@Model.UserProfile.Email</label>
+                        }
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" class="form-control" asp-for="PhoneNumber" value="@Model.UserProfile.PhoneNumber" />
-                        <span asp-validation-for="PhoneNumber" />
+                        <label class="title">Номер телефону:</label>
+                    </td>
+                    <td>
+                        @if (!Model.UserProfile.PhoneNumber.StartsWith("+38"))
+                        {
+                            <label class="data">+38 @Model.UserProfile.PhoneNumber</label>
+                        }
+                        else
+                        {
+                            <label class="data">@Model.UserProfile.PhoneNumber</label>
+                        }
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="file" class="form-control" name="uploadedFile"/>
+                        <label class="title">Дата реєстрації:</label>
                     </td>
-                </tr>
-                <tr>
                     <td>
-                        <button type="submit" class="btn btn-outline-dark">Змінити</button>
+                        <label class="data">@Model.UserProfile.RegistrationDate.ToShortDateString()</label>
                     </td>
                 </tr>
             </table>
-        </form>
+            <form id="edit" style="visibility:hidden" method="post" asp-controller="Account" asp-action="PersonalPage" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly"></div>
+                <table>
+                    <tr>
+                        <td>
+                            <input type="text" class="form-control" asp-for="FName" value="@Model.UserProfile.FirstName" />
+                            <span asp-validation-for="FName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="form-control" asp-for="LName" value="@Model.UserProfile.LastName" />
+                            <span asp-validation-for="LName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="form-control" asp-for="Email" value="@Model.UserProfile.Email" />
+                            <span asp-validation-for="Email" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="form-control" asp-for="PhoneNumber" value="@Model.UserProfile.PhoneNumber" />
+                            <span asp-validation-for="PhoneNumber" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="file" class="form-control" name="uploadedFile" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="submit" class="btn btn-outline-dark">Змінити</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
 
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
