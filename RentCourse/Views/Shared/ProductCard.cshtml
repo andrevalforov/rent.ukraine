@@ -1,4 +1,6 @@
 ﻿@model RentCourse.Data.Models.Product
+@inject RentCourse.Data.EFContext.EFDbContext _context;
+@inject Microsoft.AspNetCore.Identity.UserManager<RentCourse.Data.EFContext.DbUser> _userManager;
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -38,25 +40,49 @@
         background: #04049d !important;
         color: #ffffff !important;
     }
+
+    .star {
+        position: absolute;
+        top: 10%;
+        left: 90%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        height: 3em;
+    }
 </style>
 <div class="col mb-4">
-    <div class="card" style="margin:2em;padding:2em;border:0.3em solid #04049d; border-radius:0;">
-        <img src="/Files/@Model.Image" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">@Model.Title</h5>
-            <div style="display:flex; justify-content:space-between;align-items:center">
-                <label style="font-size:1.5em;font-family: sans-serif; font-weight: 600; line-height: 110%; letter-spacing: 2px; text-transform: uppercase;" class="card-text">@Model.Price грн.</label>
-                @*<p style="font-style:italic;" class="card-text">@Model.Description</p>*@
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#productModal">
-                    Переглянути
-                </button>
+    <div class="card h-100" style="margin:0;padding:0;border:0.3em solid #04049d; border-radius:0;" data-bs-toggle="modal" data-bs-target="#productModal">
+        <img src="/Files/@Model.Image" style="border-radius:0;height:60%" class="card-img-top" alt="...">
+            @if (_context.UserFavorites.Where(x => x.UserId == _userManager.GetUserAsync(User).Result.Id)
+                .FirstOrDefault(x=>x.ProductId==Model.Id)!=null)
+            {
+                <a class="star" asp-controller="Account" asp-action="RemoveFromFavorites" asp-route-pid="@Model.Id">
+                    <img style="height:3em" src="~/images/star-favorite.png" data-toggle="tooltip" title="Прибрати з обраного"
+                         onmouseover="this.src='/images/star-favorite-highlighted.png'"
+                         onmouseout="this.src='/images/star-favorite.png'" />
+                </a>
+            }
+            else
+            {
+                <a class="star" asp-controller="Account" asp-action="AddToFavorites" asp-route-pid="@Model.Id">
+                    <img style="height:3em" src="~/images/star.png" data-toggle="tooltip" title="Додати в обране"
+                         onmouseover="this.src='/images/star-highlighted.png'"
+                         onmouseout="this.src='/images/star.png'" />
+                </a>
+            }
+
+        <div class="card-body" style="display:flex;flex-direction:column; justify-content:space-between">
+            <h5 class="card-title" style="overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2;">@Model.Title</h5>
+            <div style="display:flex; justify-content:space-between;align-items:flex-end">
+                <label style="margin-bottom:0">@_context.Locations.FirstOrDefault(x => x.Id == Model.LocationId).City область</label>
+                <label style="font-size:1.8em;font-family: sans-serif; font-weight: 600; line-height: 110%; letter-spacing: 2px; text-transform: uppercase; color:#04049d; text-align:end" class="card-text">@Model.Price грн.</label>
             </div>
         </div>
     </div>
 </div>
 @*@inject Microsoft.AspNetCore.Identity.SignInManager<RentCourse.Data.EFContext.DbUser> _signInManager;
-@inject Microsoft.AspNetCore.Identity.UserManager<RentCourse.Data.EFContext.DbUser> _userManager;*@
-@inject RentCourse.Data.EFContext.EFDbContext _context;
+*@
+
 <!-- Modal -->
 <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true" style="--bs-gutter-x: 0;">
     <div class="modal-dialog modal-fullscreen">
@@ -67,7 +93,7 @@
             </div>
             <div class="modal-body" style="display:flex">
                 <div style="width:50%;display:flex;align-items:center; margin-right:1em">
-                    <img style="width:100%" src="/Files/@Model.Image" />
+                    <img style="width:100%; height:auto" src="/Files/@Model.Image" />
                 </div>
                 <div style="display:flex;flex-direction:column; width:50%">
                     <div style="display:flex; justify-content:space-between">
@@ -81,9 +107,9 @@
                     <label style="font-size:1em; text-transform: uppercase; margin-bottom:3em">Переглядів: @Model.ViewCount</label>
                     <div style="border: 0.3em solid #04049d;display:flex;padding:2em">
                         <div style="margin-right:2em">
-                            @if (_context.UserProfile.FirstOrDefault(x => x.Email == User.Identity.Name).Image != null)
+                            @if (_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).Image != null)
                             {
-                                <img src="/Files/@_context.UserProfile.FirstOrDefault(x => x.Email == User.Identity.Name).Image"
+                                <img src="/Files/@_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).Image"
                                      style="border-radius:100%; height:5em; width:auto" />
                             }
                             else
@@ -93,16 +119,39 @@
                             }
                         </div>
                         <div style="display:flex; flex-direction:column">
-                            <label style="font-size: 2em; text-transform: uppercase;">@_context.UserProfile.FirstOrDefault(x => x.Email == User.Identity.Name).FirstName</label>
-                            <label style="text-transform: uppercase;">На RentUkraine з @_context.UserProfile.FirstOrDefault(x => x.Email == User.Identity.Name).RegistrationDate.ToShortDateString()</label>
-                            <label style="font-size:1.5em; color:#04049d">@_context.UserProfile.FirstOrDefault(x => x.Email == User.Identity.Name).PhoneNumber</label>
+                            <label style="font-size: 2em; text-transform: uppercase;">@_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).FirstName</label>
+                            <label style="text-transform: uppercase;">На RentUkraine з @_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).RegistrationDate.ToShortDateString()</label>
+                            <div>
+                                <label style="font-size:1.5em; color:#04049d; margin-right:1em">@_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).PhoneNumber</label>
+                                @if (_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription != null)
+                                {
+                                    @if (_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.Contains("v|"))
+                                    {
+                                        <img src="~/images/viber.png" style="height:1.5em;width:1.5em" />
+                                    }
+                                    @if (_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.Contains("w|"))
+                                    {
+                                        <img src="~/images/whatsapp.png" style="height:1.5em;width:1.5em" />
+                                    }
+                                    @if (_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.EndsWith("|t") ||
+                                    _context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription == "t")
+                                    {
+                                        <img src="~/images/telegram.png" style="height:1.5em;width:1.5em" />
+                                    }
+                                    else if (_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.Contains("|t ") ||
+                                        _context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.StartsWith("t "))
+                                    {
+                                        <img src="~/images/telegram.png" style="height:1.5em;width:1.5em" />
+                                        <label>@_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.Substring(_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.IndexOf("t ") + 2)</label>
+                                    }
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline-dark">Save changes</button>
+                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Закрити</button>
             </div>
         </div>
     </div>

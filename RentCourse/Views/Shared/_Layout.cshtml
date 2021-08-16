@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>@ViewData["Title"] - rent.ukraine</title>
 </head>
-<body>
+<body style="height:100%">
     <style>
         body {
             font-family: sans-serif;
@@ -107,11 +107,22 @@
             @await Component.InvokeAsync("Category");
         }
 
-        <div class="container" style="margin-left:7%;margin-right:7%;max-width:9999px">
-            <main role="main" style="width:100%">
-                @RenderBody()
-            </main>
-        </div>
+        @if (ViewData["Title"].ToString() == "MainCars" || ViewData["Title"].ToString() == "MainRealEstate" || ViewData["Title"].ToString() == "MainThings")
+        {
+            <div class="container" style="margin:5%;margin-left:0;max-width:9999px">
+                <main role="main" style="width:100%">
+                    @RenderBody()
+                </main>
+            </div>
+        }
+        else
+        {
+            <div class="container" style="margin-left:7%;margin-right:7%;max-width:9999px">
+                <main role="main" style="width:100%">
+                    @RenderBody()
+                </main>
+            </div>
+        }
     </div>
 
     <div style="width:100%;position:absolute">

@@ -38,6 +38,16 @@ namespace RentCourse.ViewModels
         ErrorMessage = "Некоректний формат телефону")]
         public string PhoneNumber { get; set; }
 
+        public bool Viber { get; set; }
+
+        public bool WhatsApp { get; set; }
+
+        public bool Telegram { get; set; }
+
+        [RegularExpression(@"[A-Za-z0-9_]+",
+        ErrorMessage = "Некоректний формат даних")]
+        public string TgUsername { get; set; }
+
         [Required(ErrorMessage = "Введіть пароль")]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]

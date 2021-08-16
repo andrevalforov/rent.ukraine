@@ -14,7 +14,7 @@
     <link href="~/css/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="row row-cols-1 row-cols-md-2">
+    <div class="row row-cols-1 row-cols-md-3">
         @foreach (RentCourse.Data.Models.Product p in Model.GetProducts)
         {
             @await Html.PartialAsync("ProductCard", p)

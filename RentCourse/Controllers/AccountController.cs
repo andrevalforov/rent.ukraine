@@ -99,6 +99,26 @@ namespace RentCourse.Controllers
 
             if (ModelState.IsValid)
             {
+                string desc = "";
+                if (model.Viber == true)
+                {
+                    desc += "v|";
+                }
+                if (model.WhatsApp == true)
+                {
+                    desc += "w|";
+                }
+                if (model.Telegram == true)
+                {
+                    if (model.TgUsername != null)
+                    {
+                        desc += $"t {model.TgUsername}";
+                    }
+                    else
+                    {
+                        desc += "t";
+                    }
+                }
                 UserProfile userProfile = new UserProfile
                 {
                     FirstName = model.FirstName,
@@ -106,7 +126,8 @@ namespace RentCourse.Controllers
                     LastName = model.LastName,
                     PhoneNumber = model.PhoneNumber,
                     RegistrationDate = DateTime.Now,
-                    Email = model.Email
+                    Email = model.Email,
+                    UserDescription = desc
                 };
 
                 dbUser = new DbUser
@@ -114,7 +135,7 @@ namespace RentCourse.Controllers
                     Email = model.Email,
                     UserName = model.Email,
                     UserProfile = userProfile,
-                    PhoneNumber=model.PhoneNumber
+                    PhoneNumber = model.PhoneNumber
                 };
 
                 var result = await _userManager.CreateAsync(dbUser, model.Password);
@@ -288,6 +309,28 @@ namespace RentCourse.Controllers
                 var result = await _userManager.UpdateAsync(userprofile.User);
             }
             return RedirectToAction("PersonalPage", "Account");
+        }
+
+        public async Task<IActionResult> AddToFavorites(int pid)
+        {
+            var id = _userManager.GetUserAsync(User).Result.Id;
+            var p = _context.Products.FirstOrDefault(x => x.Id == pid);
+            //var userprofile = _context.Users.FirstOrDefault(u => u.Id == id);
+            UserFavorites fav = new UserFavorites { UserId = id, ProductId = p.Id };
+            await _context.UserFavorites.AddAsync(fav);
+            _context.SaveChanges();
+            return RedirectToAction(_context.Types.FirstOrDefault(x => x.Id == _context.Categories.FirstOrDefault(x => x.Id == p.CategoryId).TypeId).Name, "Product");
+        }
+
+        public async Task<IActionResult> RemoveFromFavorites(int pid)
+        {
+            var id = _userManager.GetUserAsync(User).Result.Id;
+            var p = _context.Products.FirstOrDefault(x => x.Id == pid);
+            //var userprofile = _context.Users.FirstOrDefault(u => u.Id == id);
+            UserFavorites fav = _context.UserFavorites.FirstOrDefault(x => x.ProductId == pid);
+            _context.UserFavorites.Remove(fav);
+            _context.SaveChanges();
+            return RedirectToAction(_context.Types.FirstOrDefault(x => x.Id == _context.Categories.FirstOrDefault(x => x.Id == p.CategoryId).TypeId).Name, "Product");
         }
     }
 }

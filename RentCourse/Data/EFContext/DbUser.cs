@@ -11,5 +11,6 @@ namespace RentCourse.Data.EFContext
     {
         public ICollection<DbUserRole> UserRoles { get; set; }
         public virtual UserProfile UserProfile { get; set; }
+        public ICollection<UserFavorites> UserFavorites { get; set; }
     }
 }
