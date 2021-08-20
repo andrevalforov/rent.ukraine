@@ -232,19 +232,21 @@ namespace RentCourse.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "User")]
         [Route("Account/ChangePassword/{id}")]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model, string id)
         {
-            if (ModelState.IsValid)
+            var user = _context.Users.FirstOrDefault(u => u.Id == id);
+            PasswordVerificationResult passresult = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, model.OldPassword);
+            if (ModelState.IsValid && passresult == PasswordVerificationResult.Success)
             {
-                var user = _context.Users.FirstOrDefault(u => u.Id == id);
                 if (user == null)
                 {
                     ModelState.AddModelError("", "This User not register");
                     return View(model);
                 }
 
-                var hash_password = _userManager.PasswordHasher.HashPassword(user, model.Password);
+                var hash_password = _userManager.PasswordHasher.HashPassword(user, model.NewPassword);
                 user.PasswordHash = hash_password;
                 var result = await _userManager.UpdateAsync(user);
 

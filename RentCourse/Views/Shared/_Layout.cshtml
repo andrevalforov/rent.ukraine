@@ -29,6 +29,14 @@
             margin-right: 1em;
         }
 
+        .nav-link {
+            font-family: sans-serif;
+            font-weight: 600;
+            color: #2acdc1 !important;
+            line-height: 110%;
+            text-transform: uppercase;
+        }
+
         .button:hover .label {
             color: #ffffff;
         }
@@ -43,14 +51,14 @@
         <div class="collapse navbar-collapse" id="navbarText" style="position:center">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="button nav-link" asp-controller="Product" asp-action="MainThings" asp-route-category="">
+                    <a class="button nav-link" asp-controller="Product" asp-action="MainThings" asp-route-search="" asp-route-category="" asp-route-location="" asp-route-minprice="" asp-route-maxprice="" asp-route-sort="">
                         <div class="label">
                             Прокат речей
                         </div>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="button nav-link" asp-controller="Product" asp-action="MainRealEstate">
+                    <a class="button nav-link" asp-controller="Product" asp-action="MainRealEstate" asp-route-search="" asp-route-category="" asp-route-location="" asp-route-minprice="" asp-route-maxprice="" asp-route-sort="">
                         <div class="label">
                             Оренда нерухомості
                         </div>
@@ -81,9 +89,9 @@
                 <div class="dropdown-content" style="font-weight:600; text-transform:uppercase;border: 0.2em solid #04049d" id="accountdropdown">
                     @if (User.IsInRole("User"))
                     {
-                        <a class="nav-link" asp-controller="Account" asp-action="PersonalPage" style="color:#2acdc1">Моя сторінка</a>
-                        <a class="nav-link" asp-controller="Product" asp-action="AddProduct" style="color:#2acdc1">Нове оголошення</a>
-                        <a class="nav-link" asp-controller="Account" asp-action="" style="color:#2acdc1">Обране</a>
+                        <a class="nav-link" asp-controller="Account" asp-action="PersonalPage">Моя сторінка</a>
+                        <a class="nav-link" asp-controller="Product" asp-action="AddProduct">Нове оголошення</a>
+                        <a class="nav-link" asp-controller="Product" asp-action="Favorites">Обране</a>
                         <form method="post" asp-controller="Account" asp-action="Logout">
                             <input class="nav-link" type="submit" value="Вихід" style="color:#2acdc1 !important;font-weight:600 !important; text-transform:uppercase !important; border:none !important; background:none !important" />
                         </form>

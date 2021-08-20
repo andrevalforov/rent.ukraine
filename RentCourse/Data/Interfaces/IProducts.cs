@@ -12,6 +12,7 @@ namespace RentCourse.Data.Interfaces
         IEnumerable<Product> GetAvProducts { get; }
         IEnumerable<Product> GetProductsByCategory(int CategoryId);
         IEnumerable<Product> GetProductsByType(int TypeId);
+        IEnumerable<Product> GetProducts(string type, string category, string location, string sort, string? search, double? minprice, double? maxprice);
         Product GetProduct(int Id);
     }
 }

@@ -45,3 +45,4 @@ C:\Users\andre\source\repos (old)\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2
 C:\Users\andre\source\repos (old)\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.pdb
 C:\Users\andre\source\repos (old)\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.genruntimeconfig.cache
 C:\Users\andre\source\repos (old)\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\RentCourse.csproj.CopyComplete
+C:\Users\andre\source\repos (old)\rent.ukraine3\RentCourse\obj\Debug\netcoreapp2.1\Razor\Views\Product\Favorites.cshtml.g.cs

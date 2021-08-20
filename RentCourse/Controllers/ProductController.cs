@@ -38,45 +38,22 @@ namespace RentCourse.Controllers
             _location = location;
         }
         [Route("Product/MainThings")]
-        [Route("Product/MainThings/{category}")]
-        [Route("Product/MainThings/{location}")]
-        [Route("Product/MainThings/{category}/{location}")]
-        public ViewResult MainThings(string category, string location)
+        public ViewResult MainThings(string search, string category, string location, double minprice, double maxprice, string sort)
         {
             IEnumerable<Product> products = null;
             string productCategory = "";
             string productLocation = "";
             string type = "MainThings";
-            if (string.IsNullOrEmpty(category) && string.IsNullOrEmpty(location))
-            {
-                products = _products.GetAllProducts
-                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id);
-            }
-            else if (string.IsNullOrEmpty(category) && !string.IsNullOrEmpty(location))
-            {
-                products = _products.GetAllProducts
-                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id)
-                    .Where(x => x.LocationId == _location.Locations.FirstOrDefault(a => a.City.ToLower() == location.ToLower()).Id);
 
-                productLocation = location;
-            }
-            else if (!string.IsNullOrEmpty(category) && string.IsNullOrEmpty(location))
+            if (category != null)
             {
-                products = _products.GetAllProducts
-                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id)
-                    .Where(x => x.Category.Name.ToLower() == category.ToLower());
-
+                products = _products.GetProducts(type, category, location, sort, search, minprice, maxprice);
                 productCategory = category;
+                productLocation = location;
             }
             else
             {
-                products = _products.GetAllProducts
-                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id)
-                    .Where(x => x.Category.Name.ToLower() == category.ToLower())
-                    .Where(x => x.LocationId == _location.Locations.FirstOrDefault(a => a.City.ToLower() == location.ToLower()).Id);
-
-                productCategory = category;
-                productLocation = location;
+                products = _products.GetAvProducts.Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(t => t.Name == type).Id);
             }
 
             var productObj = new ProductListViewModel
@@ -91,45 +68,22 @@ namespace RentCourse.Controllers
         }
 
         [Route("Product/MainRealEstate")]
-        [Route("Product/MainRealEstate/{category}")]
-        [Route("Product/MainRealEstate/{location}")]
-        [Route("Product/MainRealEstate/{category}/{location}")]
-        public ViewResult MainRealEstate(string category, string location)
+        public ViewResult MainRealEstate(string search, string category, string location, double minprice, double maxprice, string sort)
         {
             IEnumerable<Product> products = null;
             string productCategory = "";
             string productLocation = "";
             string type = "MainRealEstate";
-            if (string.IsNullOrEmpty(category) && string.IsNullOrEmpty(location))
-            {
-                products = _products.GetAllProducts
-                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id);
-            }
-            else if (string.IsNullOrEmpty(category) && !string.IsNullOrEmpty(location))
-            {
-                products = _products.GetAllProducts
-                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id)
-                    .Where(x => x.LocationId == _location.Locations.FirstOrDefault(a=>a.City.ToLower()==location.ToLower()).Id);
 
-                productLocation = location;
-            }
-            else if (!string.IsNullOrEmpty(category) && string.IsNullOrEmpty(location))
+            if (category != null)
             {
-                products = _products.GetAllProducts
-                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id)
-                    .Where(x => x.Category.Name.ToLower() == category.ToLower());
-
+                products = _products.GetProducts(type, category, location, sort, search, minprice, maxprice);
                 productCategory = category;
+                productLocation = location;
             }
             else
             {
-                products = _products.GetAllProducts
-                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id)
-                    .Where(x => x.Category.Name.ToLower() == category.ToLower())
-                    .Where(x => x.LocationId == _location.Locations.FirstOrDefault(a => a.City.ToLower() == location.ToLower()).Id);
-
-                productCategory = category;
-                productLocation = location;
+                products = _products.GetAvProducts.Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(t => t.Name == type).Id);
             }
 
             var productObj = new ProductListViewModel
@@ -144,45 +98,22 @@ namespace RentCourse.Controllers
         }
 
         [Route("Product/MainCars")]
-        [Route("Product/MainCars/{category}")]
-        [Route("Product/MainCars/{location}")]
-        [Route("Product/MainCars/{category}/{location}")]
-        public ViewResult MainCars(string category, string location)
+        public ViewResult MainCars(string search, string category, string location, double minprice, double maxprice, string sort)
         {
             IEnumerable<Product> products = null;
             string productCategory = "";
             string productLocation = "";
             string type = "MainCars";
-            if (string.IsNullOrEmpty(category) && string.IsNullOrEmpty(location))
-            {
-                products = _products.GetAllProducts
-                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id);
-            }
-            else if(string.IsNullOrEmpty(category) && !string.IsNullOrEmpty(location))
-            {
-                products = _products.GetAllProducts
-                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id)
-                    .Where(x => x.LocationId == _location.Locations.FirstOrDefault(a => a.City.ToLower() == location.ToLower()).Id);
 
-                productLocation = location;
-            }
-            else if (!string.IsNullOrEmpty(category) && string.IsNullOrEmpty(location))
+            if (category != null)
             {
-                products = _products.GetAllProducts
-                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id)
-                    .Where(x => x.Category.Name.ToLower() == category.ToLower());
-
+                products = _products.GetProducts(type, category, location, sort, search, minprice, maxprice);
                 productCategory = category;
+                productLocation = location;
             }
             else
             {
-                products = _products.GetAllProducts
-                    .Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(y => y.Name.ToLower() == type.ToLower()).Id)
-                    .Where(x => x.Category.Name.ToLower() == category.ToLower())
-                    .Where(x => x.LocationId == _location.Locations.FirstOrDefault(a=>a.City.ToLower()==location.ToLower()).Id);
-                
-                productCategory = category;
-                productLocation = location;
+                products = _products.GetAvProducts.Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(t => t.Name == type).Id);
             }
 
             var productObj = new ProductListViewModel
@@ -257,5 +188,24 @@ namespace RentCourse.Controllers
             }
             return View();
         }
+
+        public ViewResult Favorites()
+        {
+            var id = _userManager.GetUserAsync(User).Result.Id;
+            var userfavs = _context.UserFavorites.Where(x => x.UserId == id);
+            List<Product> products = new List<Product>();
+            foreach (var item in userfavs)
+            {
+                products.Add(_products.GetAvProducts.FirstOrDefault(x => x.Id == item.ProductId));
+            }
+            var productObj = new FavoritesViewModel
+            {
+                Products = products
+            };
+
+            return View(productObj);
+        }
+
+
     }
 }

@@ -10,13 +10,20 @@ namespace RentCourse.ViewModels
     {
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Пароль")]
-        public string Password { get; set; }
+        [Display(Name = "Старий пароль")]
+        public string OldPassword { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Новий пароль")]
+        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,24}$",
+        ErrorMessage = "Некоректний формат паролю")]
+        public string NewPassword { get; set; }
         
         [Required]
         [Compare("Password", ErrorMessage = "Паролі не співпадають")]
         [DataType(DataType.Password)]
         [Display(Name = "Підтвердіть пароль")]
-        public string PasswordConfirm { get; set; }
+        public string NewPasswordConfirm { get; set; }
     }
 }

@@ -72,7 +72,7 @@
     }
 </style>
 <body>
-    <div style="margin:7%;">
+    <div style="margin-top:7%;margin-bottom:7%">
         <label class="title" style="font-size:3em;text-align:center;">Привіт, @Model.UserProfile.FirstName</label>
         <div style=" display: flex; flex-direction: row; align-items: center">
             <div style="display:flex;flex-direction:column;align-items:center;justify-content:center">
@@ -96,7 +96,7 @@
                         <label class="data">@Model.UserProfile.FirstName</label>
                     </td>
                     <td>
-                        <a id="firstnameedit" data-toggle="tooltip" title="Змінити" onclick="document.getElementById('edit').style.visibility='visible'"><img src="~/images/61456.png" /></a>
+                        <a id="firstnameedit" data-toggle="tooltip" title="Змінити" onclick="if (document.getElementById('edit').style.visibility == 'hidden') { document.getElementById('edit').style.visibility = 'visible' } else { document.getElementById('edit').style.visibility = 'hidden' }"><img src="~/images/61456.png" /></a>
                     </td>
                 </tr>
                 <tr>
@@ -145,6 +145,11 @@
                         <label class="data">@Model.UserProfile.RegistrationDate.ToShortDateString()</label>
                     </td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                    </td>
+                </tr>
             </table>
             <form id="edit" style="visibility:hidden" method="post" asp-controller="Account" asp-action="PersonalPage" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly"></div>
@@ -179,8 +184,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="display:flex;flex-direction:row;justify-content:space-between;align-items:center">
                             <button type="submit" class="btn btn-outline-dark">Змінити</button>
+                            <a asp-controller="Account" asp-action="ChangePassword" asp-route-id="@Model.User.Id" style="font-size: 1em; font-family: sans-serif; color: #04049d; text-decoration:none">Змінити пароль</a>
                         </td>
                     </tr>
                 </table>
@@ -188,8 +194,8 @@
         </div>
 
         @inject RentCourse.Data.EFContext.EFDbContext _context;
-        <label class="title" style="font-size:3em;text-align:center;">Мої оголошення</label>
-        <div class="row row-cols-1 row-cols-md-3">
+        <label class="title" style="font-size:3em;text-align:center;margin-top:1em;margin-bottom:1em">Мої оголошення</label>
+        <div class="row row-cols-1 row-cols-md-4">
             @foreach (RentCourse.Data.Models.Product p in _context.Products)
             {
                 if (p.UserId == Model.User.Id)

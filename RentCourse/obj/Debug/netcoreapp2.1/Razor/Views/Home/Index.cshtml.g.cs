@@ -204,7 +204,7 @@ using RentCourse.Models;
 ");
             EndContext();
             BeginContext(3001, 7940, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "05ad19d8444d4bf6914214bce7f6028e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0003f53f162c4ea6bd748aba3d60f8de", async() => {
                 BeginContext(3007, 2, true);
                 WriteLiteral("\r\n");
                 EndContext();
@@ -212,7 +212,7 @@ using RentCourse.Models;
                 WriteLiteral("    <table style=\"margin-top:2em;margin-bottom:2em;width:100%\">\r\n        <tr>\r\n            <td style=\"width:50%\">\r\n                <div class=\"intab\">\r\n                    ");
                 EndContext();
                 BeginContext(7206, 56, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "318bf9909103428897b3afa0e0c05ef2", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "aeefd9c1c93c4f1094a48ad84832fbd3", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -247,7 +247,7 @@ using RentCourse.Models;
                     ");
                 EndContext();
                 BeginContext(8359, 296, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "00682b52fc6d42feb9186f5e009a2929", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf05d97b76fa40ea94ffc14e626c22a5", async() => {
                     BeginContext(8411, 240, true);
                     WriteLiteral("\r\n                        <label style=\"margin-top:4%; font-family: sans-serif; font-weight: 600; color: #2acdc1; font-size: 3em; line-height: 110%; letter-spacing: 2px; text-transform: uppercase;\">Прокат речей</label>\r\n                    ");
                     EndContext();
@@ -271,7 +271,7 @@ using RentCourse.Models;
                 WriteLiteral("\r\n                </div>\r\n            </td>\r\n            <td>\r\n                <div class=\"intab\">\r\n                    ");
                 EndContext();
                 BeginContext(8775, 52, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "3119a65c4a4a450bac80614c0928a1f4", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "af419ae618dd4eae9be7104871831b0b", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -290,7 +290,7 @@ using RentCourse.Models;
                 WriteLiteral("\r\n                </div>\r\n            </td>\r\n        </tr>\r\n        <tr>\r\n            <td style=\"width:50%\">\r\n                <div class=\"intab\">\r\n                    ");
                 EndContext();
                 BeginContext(8994, 57, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "18c42e188e184c36a56187670d2a92fe", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "f6c0e84af04a40458d847d7e2833eed7", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -309,7 +309,7 @@ using RentCourse.Models;
                 WriteLiteral("\r\n                </div>\r\n            </td>\r\n            <td>\r\n                <div class=\"intab\">\r\n                    ");
                 EndContext();
                 BeginContext(9171, 306, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "921f7a65fbeb4075b9145afc41cc2386", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f47e85b33ea5473a90f9a6a195ac7203", async() => {
                     BeginContext(9227, 246, true);
                     WriteLiteral("\r\n                        <label style=\"margin-top:4%; font-family: sans-serif; font-weight: 600; color: #2acdc1; font-size: 3em; line-height: 110%; letter-spacing: 2px; text-transform: uppercase;\">Оренда нерухомості</label>\r\n                    ");
                     EndContext();
@@ -333,7 +333,7 @@ using RentCourse.Models;
                 WriteLiteral("\r\n                </div>\r\n            </td>\r\n        </tr>\r\n        <tr>\r\n            <td>\r\n                <div class=\"intab\">\r\n                    ");
                 EndContext();
                 BeginContext(9626, 299, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "15c6f930f60b4254b2e2a28b32f817bc", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3c6da0436905431784e50e40f8ee56d4", async() => {
                     BeginContext(9676, 245, true);
                     WriteLiteral("\r\n                        <label style=\"margin-top:4%; font-family: sans-serif; font-weight: 600; color: #2acdc1; font-size: 3em; line-height: 110%; letter-spacing: 2px; text-transform: uppercase;\">Оренда транспорту</label>\r\n                    ");
                     EndContext();
@@ -357,7 +357,7 @@ using RentCourse.Models;
                 WriteLiteral("\r\n                </div>\r\n            </td>\r\n            <td style=\"width:50%\">\r\n                <div class=\"intab\">\r\n                    ");
                 EndContext();
                 BeginContext(10063, 124, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "fe47402b294a4225a56163cacf019cc8", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "67de58b44ab741dcabe6939a011206ab", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

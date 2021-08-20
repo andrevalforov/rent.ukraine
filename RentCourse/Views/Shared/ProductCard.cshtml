@@ -72,7 +72,7 @@
             }
 
         <div class="card-body" style="display:flex;flex-direction:column; justify-content:space-between">
-            <h5 class="card-title" style="overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2;">@Model.Title</h5>
+            <h5 class="card-title" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; /* number of lines to show */ -webkit-box-orient: vertical;">@Model.Title</h5>
             <div style="display:flex; justify-content:space-between;align-items:flex-end">
                 <label style="margin-bottom:0">@_context.Locations.FirstOrDefault(x => x.Id == Model.LocationId).City область</label>
                 <label style="font-size:1.8em;font-family: sans-serif; font-weight: 600; line-height: 110%; letter-spacing: 2px; text-transform: uppercase; color:#04049d; text-align:end" class="card-text">@Model.Price грн.</label>
