@@ -180,7 +180,7 @@ namespace RentCourse.Controllers
                 _context.Products.Add(product);
                 _context.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -206,6 +206,53 @@ namespace RentCourse.Controllers
             return View(productObj);
         }
 
+        [HttpGet]
+        public IActionResult EditProduct()
+        {
+            return View();
+        }
 
+        [Authorize(Roles = "User")]
+        [HttpPost]
+        public async Task<IActionResult> EditProduct(EditProductViewModel model, DbUser user, IFormFile uploadedFile)
+        {
+            if (ModelState.IsValid)
+            {
+                if (uploadedFile != null && uploadedFile.Length > 0)
+                {
+                    // путь к папке Files
+                    string path = "/Files/" + uploadedFile.FileName;
+                    // сохраняем файл в папку Files в каталоге wwwroot
+                    using (var fileStream = new FileStream(_env.WebRootPath + path, FileMode.Create))
+                    {
+                        await uploadedFile.CopyToAsync(fileStream);
+                    }
+                    FileModel file = new FileModel { Name = uploadedFile.FileName, Path = path };
+                    _context.Files.Add(file);
+                    _context.SaveChanges();
+                }
+                var id = model.UserId;
+                var userprof = _context.UserProfile.FirstOrDefault(x => x.Id == id);
+                Product product = _context.Products.FirstOrDefault(x => x.Id == model.ProductId);
+
+                product.Title = model.Title;
+                product.Description = model.Description;
+                product.Price = model.Price;
+                if (uploadedFile != null)
+                {
+                    product.Image = model.ImageName;
+                }
+
+                _context.Products.Update(product);
+                _context.SaveChanges();
+
+                return RedirectToAction("PersonalPage", "Account");
+            }
+            else
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+            }
+            return View();
+        }
     }
 }

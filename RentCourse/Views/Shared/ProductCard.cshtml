@@ -51,25 +51,25 @@
     }
 </style>
 <div class="col mb-4">
-    <div class="card h-100" style="margin:0;padding:0;border:0.3em solid #04049d; border-radius:0;" data-bs-toggle="modal" data-bs-target="#productModal">
+    <div class="card h-100" style="margin:0;padding:0;border:0.3em solid #04049d; border-radius:0;" data-bs-toggle="modal" data-bs-target="#modal_@Model.Id">
         <img src="/Files/@Model.Image" style="border-radius:0;height:60%" class="card-img-top" alt="...">
-            @if (_context.UserFavorites.Where(x => x.UserId == _userManager.GetUserAsync(User).Result.Id)
-                .FirstOrDefault(x=>x.ProductId==Model.Id)!=null)
-            {
-                <a class="star" asp-controller="Account" asp-action="RemoveFromFavorites" asp-route-pid="@Model.Id">
-                    <img style="height:3em" src="~/images/star-favorite.png" data-toggle="tooltip" title="Прибрати з обраного"
-                         onmouseover="this.src='/images/star-favorite-highlighted.png'"
-                         onmouseout="this.src='/images/star-favorite.png'" />
-                </a>
-            }
-            else
-            {
-                <a class="star" asp-controller="Account" asp-action="AddToFavorites" asp-route-pid="@Model.Id">
-                    <img style="height:3em" src="~/images/star.png" data-toggle="tooltip" title="Додати в обране"
-                         onmouseover="this.src='/images/star-highlighted.png'"
-                         onmouseout="this.src='/images/star.png'" />
-                </a>
-            }
+        @if (_context.UserFavorites.Where(x => x.UserId == _userManager.GetUserAsync(User).Result.Id)
+          .FirstOrDefault(x => x.ProductId == Model.Id) != null)
+        {
+            <a class="star" asp-controller="Account" asp-action="RemoveFromFavorites" asp-route-pid="@Model.Id">
+                <img style="height:3em" src="~/images/star-favorite.png" data-toggle="tooltip" title="Прибрати з обраного"
+                     onmouseover="this.src='/images/star-favorite-highlighted.png'"
+                     onmouseout="this.src='/images/star-favorite.png'" />
+            </a>
+        }
+        else
+        {
+            <a class="star" asp-controller="Account" asp-action="AddToFavorites" asp-route-pid="@Model.Id">
+                <img style="height:3em" src="~/images/star.png" data-toggle="tooltip" title="Додати в обране"
+                     onmouseover="this.src='/images/star-highlighted.png'"
+                     onmouseout="this.src='/images/star.png'" />
+            </a>
+        }
 
         <div class="card-body" style="display:flex;flex-direction:column; justify-content:space-between">
             <h5 class="card-title" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; /* number of lines to show */ -webkit-box-orient: vertical;">@Model.Title</h5>
@@ -84,7 +84,7 @@
 *@
 
 <!-- Modal -->
-<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true" style="--bs-gutter-x: 0;">
+<div class="modal fade" id="modal_@Model.Id" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true" style="--bs-gutter-x: 0;">
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
@@ -134,7 +134,7 @@
                                         <img src="~/images/whatsapp.png" style="height:1.5em;width:1.5em" />
                                     }
                                     @if (_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.EndsWith("|t") ||
-                                    _context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription == "t")
+                                  _context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription == "t")
                                     {
                                         <img src="~/images/telegram.png" style="height:1.5em;width:1.5em" />
                                     }
@@ -142,7 +142,9 @@
                                         _context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.StartsWith("t "))
                                     {
                                         <img src="~/images/telegram.png" style="height:1.5em;width:1.5em" />
-                                        <label>@_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.Substring(_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.IndexOf("t ") + 2)</label>
+                                        <a target="_blank" rel="noopener noreferrer" href="@String.Concat( "https://t.me/", _context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.Substring(_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.IndexOf("t ") + 2))">
+                                            <label>@_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.Substring(_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.IndexOf("t ") + 2)</label>
+                                        </a>
                                     }
                                 }
                             </div>
@@ -151,10 +153,20 @@
                 </div>
             </div>
             <div class="modal-footer">
+                @if (_userManager.GetUserAsync(User).Result.Id == Model.UserId)
+                {
+                    @await Html.PartialAsync("EditProductModal", new RentCourse.ViewModels.EditProductViewModel
+                    {
+                        UserId = _userManager.GetUserAsync(User).Result.Id,
+                        ProductId = Model.Id
+                    });
+                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editmodal_@Model.Id">Редагувати</button>
+                }
                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Закрити</button>
             </div>
         </div>
     </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>

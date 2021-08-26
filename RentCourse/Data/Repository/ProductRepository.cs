@@ -49,8 +49,10 @@ namespace RentCourse.Data.Repository
                 products = products.Where(x => x.Title.ToLower().Contains(search.ToLower()));
             }
 
-            if (minprice != 0 && maxprice != 0)
-            {
+            if (minprice == 0 && maxprice == 0)
+            { }
+            else 
+            { 
                 if (minprice <= maxprice)
                 {
                     products = products.Where(x => x.Price >= minprice && x.Price <= maxprice);

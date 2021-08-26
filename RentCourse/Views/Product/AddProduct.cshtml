@@ -55,7 +55,49 @@
         margin-bottom: 1em;
     }
 </style>
-<body style="background-image: url(https://pbs.twimg.com/media/EuxyjDgXIAEo4Ke?format=jpg&name=large)">
+<script>
+    function changeFunc() {
+        var typeselect = document.getElementById('typeselect');
+        var selectedValue = typeselect.options[typeselect.selectedIndex].value;
+        var thingoptions = document.querySelectorAll('[id=thingoption]');
+        var estateoptions = document.querySelectorAll('[id=estateoption]');
+        var caroptions = document.querySelectorAll('[id=caroption]');
+        if (selectedValue == 1) {
+            for (var i = 0; i < thingoptions.length; i++) {
+                thingoptions[i].hidden = false;
+            }
+            for (var i = 0; i < estateoptions.length; i++) {
+                estateoptions[i].hidden = true;
+            }
+            for (var i = 0; i < caroptions.length; i++) {
+                caroptions[i].hidden = true;
+            }
+        }
+        else if (selectedValue == 2) {
+            for (var i = 0; i < thingoptions.length; i++) {
+                thingoptions[i].hidden = true;
+            }
+            for (var i = 0; i < estateoptions.length; i++) {
+                estateoptions[i].hidden = false;
+            }
+            for (var i = 0; i < caroptions.length; i++) {
+                caroptions[i].hidden = true;
+            }
+        }
+        else if (selectedValue == 3) {
+            for (var i = 0; i < thingoptions.length; i++) {
+                thingoptions[i].hidden = true;
+            }
+            for (var i = 0; i < estateoptions.length; i++) {
+                estateoptions[i].hidden = true;
+            }
+            for (var i = 0; i < caroptions.length; i++) {
+                caroptions[i].hidden = false;
+            }
+        }
+    }
+</script>
+<body onload="changeFunc();" style="background-image: url(https://pbs.twimg.com/media/EuxyjDgXIAEo4Ke?format=jpg&name=large)">
 
     <a asp-controller="Home" asp-action="Index">
         <button style="border-radius:25px;height:50px;width:50px; border-color:#04049d;border-width:1px;background:none;margin-top:10px;margin-left:10px;">
@@ -66,7 +108,7 @@
         <table style="margin-left:7%;margin-right:7%">
             <tr>
                 <td style="width:50%">
-                    <div style="display:flex;flex-direction: column;justify-content: center;align-items: center;padding: 5em">
+                    <div style="display:flex;flex-direction: column;justify-content: center;align-items: center;padding-left: 5em; padding-right: 5em">
                         <div style="display:flex;justify-content:center;margin-bottom:0">
                             <label style="color:#2acdc1; font-size:3em; text-align:center">Нове оголошення</label>
                         </div>
@@ -75,8 +117,8 @@
                             <div>
                                 <label asp-for="TypeId"></label><br />
                                 <p>
-                                    <select id="type" class="form-control" asp-for="TypeId">
-                                        <option value="1">Прокат речей</option>
+                                    <select id="typeselect" name="typeselect" class="form-control" asp-for="TypeId" onchange="changeFunc();">
+                                        <option selected value="1">Прокат речей</option>
                                         <option value="2">Оренда нерухомості</option>
                                         <option value="3">Оренда авто</option>
                                     </select>
@@ -85,40 +127,28 @@
                             </div>
                             <div>
                                 <label asp-for="CategotyId"></label><br />
-                                @*<script>
-                                        HTMLSelectElement typeselect = document.getElementById("type");
-                                        var typ = typeselect.value;
-
-                                        if (typ == 1) {
-
-                                        }
-                                    </script>*@
-                                <select class="form-control" asp-for="CategotyId">
-                                    @foreach (var category in Model.GetCategories)
+                                <select id="thingsselect" class="form-control" asp-for="CategotyId">
+                                    @foreach (var category in Model.GetCategories.Where(x => x.TypeId == 1))
                                     {
-                                        <option value="@category.Id">@category.Name</option>
+                                        if (category.Name != "Усі речі")
+                                        {
+                                            <option id="thingoption" value="@category.Id">@category.Name</option>
+                                        }
                                     }
-                                    @*@if (typ == 1)
+                                    @foreach (var category in Model.GetCategories.Where(x => x.TypeId == 2))
+                                    {
+                                        if (category.Name != "Уся нерухомість")
                                         {
-                                            @foreach (var category in Model.GetCategories.Where(x => x.TypeId == 1))
-                                            {
-                                                <option value="@category.Id">@category.Name</option>
-                                            }
+                                            <option id="estateoption" value="@category.Id">@category.Name</option>
                                         }
-                                        else if (Model.TypeId == 2)
+                                    }
+                                    @foreach (var category in Model.GetCategories.Where(x => x.TypeId == 3))
+                                    {
+                                        if (category.Name != "Увесь транспорт")
                                         {
-                                            @foreach (var category in Model.GetCategories.Where(x => x.TypeId == 2))
-                                            {
-                                                <option value="@category.Id">@category.Name</option>
-                                            }
+                                            <option id="caroption" value="@category.Id">@category.Name</option>
                                         }
-                                        else/* if (Model.TypeId == 3)*/
-                                        {
-                                            @foreach (var category in Model.GetCategories.Where(x => x.TypeId == 3))
-                                            {
-                                                <option value="@category.Id">@category.Name</option>
-                                            }
-                                        }*@
+                                    }
                                 </select>
                                 <span asp-validation-for="CategotyId"></span>
                             </div>
@@ -142,16 +172,16 @@
                                 <select class="form-control" asp-for="LocationId">
                                     @foreach (var location in Model.GetLocations)
                                     {
-
-                                        <option value="@location.Id">@location.City</option>
-
+                                        if (location.City != "Уся Україна")
+                                        {
+                                            <option value="@location.Id">@location.City</option>
+                                        }
                                     }
                                 </select>
                                 <span asp-validation-for="LocationId"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="ImageName"></label>
-                                @*<input asp-for="Image" />*@
                                 <input class="form-control" type="file" name="uploadedFile" />
                                 <span asp-validation-for="ImageName" />
                             </div>
