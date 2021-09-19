@@ -16,7 +16,7 @@
         font-family: sans-serif;
         font-weight: 600;
         color: #2acdc1;
-        font-size: 2em;
+        font-size: 1.8em;
         text-transform: uppercase;
     }
 
@@ -53,35 +53,36 @@
 <div class="col mb-4">
     <div class="card h-100" style="margin:0;padding:0;border:0.3em solid #04049d; border-radius:0;" data-bs-toggle="modal" data-bs-target="#modal_@Model.Id">
         <img src="/Files/@Model.Image" style="border-radius:0;height:60%" class="card-img-top" alt="...">
-        @if (_context.UserFavorites.Where(x => x.UserId == _userManager.GetUserAsync(User).Result.Id)
-          .FirstOrDefault(x => x.ProductId == Model.Id) != null)
+        @if (User.Identity.IsAuthenticated)
         {
-            <a class="star" asp-controller="Account" asp-action="RemoveFromFavorites" asp-route-pid="@Model.Id">
-                <img style="height:3em" src="~/images/star-favorite.png" data-toggle="tooltip" title="Прибрати з обраного"
-                     onmouseover="this.src='/images/star-favorite-highlighted.png'"
-                     onmouseout="this.src='/images/star-favorite.png'" />
-            </a>
-        }
-        else
-        {
-            <a class="star" asp-controller="Account" asp-action="AddToFavorites" asp-route-pid="@Model.Id">
-                <img style="height:3em" src="~/images/star.png" data-toggle="tooltip" title="Додати в обране"
-                     onmouseover="this.src='/images/star-highlighted.png'"
-                     onmouseout="this.src='/images/star.png'" />
-            </a>
+            @if (_context.UserFavorites.Where(x => x.UserId == _userManager.GetUserAsync(User).Result.Id)
+            .FirstOrDefault(x => x.ProductId == Model.Id) != null)
+            {
+                <a class="star" asp-controller="Account" asp-action="RemoveFromFavorites" asp-route-pid="@Model.Id">
+                    <img style="height:3em" src="~/images/star-favorite.png" data-toggle="tooltip" title="Прибрати з обраного"
+                         onmouseover="this.src='/images/star-favorite-highlighted.png'"
+                         onmouseout="this.src='/images/star-favorite.png'" />
+                </a>
+            }
+            else
+            {
+                <a class="star" asp-controller="Account" asp-action="AddToFavorites" asp-route-pid="@Model.Id">
+                    <img style="height:3em" src="~/images/star.png" data-toggle="tooltip" title="Додати в обране"
+                         onmouseover="this.src='/images/star-highlighted.png'"
+                         onmouseout="this.src='/images/star.png'" />
+                </a>
+            }
         }
 
         <div class="card-body" style="display:flex;flex-direction:column; justify-content:space-between">
             <h5 class="card-title" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; /* number of lines to show */ -webkit-box-orient: vertical;">@Model.Title</h5>
             <div style="display:flex; justify-content:space-between;align-items:flex-end">
-                <label style="margin-bottom:0">@_context.Locations.FirstOrDefault(x => x.Id == Model.LocationId).City область</label>
+                <label style="margin-bottom:0">@_context.Locations.FirstOrDefault(x => x.Id == Model.LocationId).City</label>
                 <label style="font-size:1.8em;font-family: sans-serif; font-weight: 600; line-height: 110%; letter-spacing: 2px; text-transform: uppercase; color:#04049d; text-align:end" class="card-text">@Model.Price грн.</label>
             </div>
         </div>
     </div>
 </div>
-@*@inject Microsoft.AspNetCore.Identity.SignInManager<RentCourse.Data.EFContext.DbUser> _signInManager;
-*@
 
 <!-- Modal -->
 <div class="modal fade" id="modal_@Model.Id" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true" style="--bs-gutter-x: 0;">
@@ -92,19 +93,19 @@
                 <button type="button" style="color:#04049d; font-size:3em; border:none !important" class="btn" data-bs-dismiss="modal" aria-label="Close">×</button>
             </div>
             <div class="modal-body" style="display:flex">
-                <div style="width:50%;display:flex;align-items:center; margin-right:1em">
-                    <img style="width:100%; height:auto" src="/Files/@Model.Image" />
+                <div style="width:50%;display:flex;align-items:center; margin-right:1em; justify-content:center">
+                    <img style="max-width:100%; height:100%" src="/Files/@Model.Image" />
                 </div>
                 <div style="display:flex;flex-direction:column; width:50%">
                     <div style="display:flex; justify-content:space-between">
-                        <label style="text-transform: uppercase;">@_context.Locations.FirstOrDefault(x => x.Id == Model.LocationId).City область</label>
+                        <label style="text-transform: uppercase;">@_context.Locations.FirstOrDefault(x => x.Id == Model.LocationId).City</label>
                         <label style="text-transform: uppercase;">@_context.Categories.FirstOrDefault(x => x.Id == Model.CategoryId).Name</label>
                     </div>
                     <label style="font-size:3em; letter-spacing: 2px; text-transform: uppercase; color:#04049d; margin-top:1em">@Model.Price грн.</label>
                     <label style="font-size:2em; text-transform: uppercase; margin-top:1em">Опис:</label>
                     <label style="font-size:1.5em">@Model.Description</label>
-                    <label style="font-size: 1em; text-transform: uppercase; margin-top:3em">Опубліковано: @Model.DateOfPublication.ToShortDateString()</label>
-                    <label style="font-size:1em; text-transform: uppercase; margin-bottom:3em">Переглядів: @Model.ViewCount</label>
+                    <label style="font-size: 1em; text-transform: uppercase; margin-top:3em">Опубліковано: @Model.DateOfPublication.ToString("dd-MM-yyyy")</label>
+                    @*<label style="font-size:1em; text-transform: uppercase; margin-bottom:3em">Переглядів: @Model.ViewCount</label>*@
                     <div style="border: 0.3em solid #04049d;display:flex;padding:2em">
                         <div style="margin-right:2em">
                             @if (_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).Image != null)
@@ -120,7 +121,7 @@
                         </div>
                         <div style="display:flex; flex-direction:column">
                             <label style="font-size: 2em; text-transform: uppercase;">@_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).FirstName</label>
-                            <label style="text-transform: uppercase;">На RentUkraine з @_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).RegistrationDate.ToShortDateString()</label>
+                            <label style="text-transform: uppercase;">На RentUkraine з @_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).RegistrationDate.ToString("dd-MM-yyyy")</label>
                             <div>
                                 <label style="font-size:1.5em; color:#04049d; margin-right:1em">@_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).PhoneNumber</label>
                                 @if (_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription != null)
@@ -134,7 +135,7 @@
                                         <img src="~/images/whatsapp.png" style="height:1.5em;width:1.5em" />
                                     }
                                     @if (_context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription.EndsWith("|t") ||
-                                  _context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription == "t")
+                                _context.UserProfile.FirstOrDefault(x => x.Id == Model.UserId).UserDescription == "t")
                                     {
                                         <img src="~/images/telegram.png" style="height:1.5em;width:1.5em" />
                                     }
@@ -153,14 +154,17 @@
                 </div>
             </div>
             <div class="modal-footer">
-                @if (_userManager.GetUserAsync(User).Result.Id == Model.UserId)
+                @if (User.Identity.IsAuthenticated)
                 {
-                    @await Html.PartialAsync("EditProductModal", new RentCourse.ViewModels.EditProductViewModel
+                    @if (_userManager.GetUserAsync(User).Result.Id == Model.UserId)
                     {
-                        UserId = _userManager.GetUserAsync(User).Result.Id,
-                        ProductId = Model.Id
-                    });
-                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editmodal_@Model.Id">Редагувати</button>
+                        @await Html.PartialAsync("EditProductModal", new RentCourse.ViewModels.EditProductViewModel
+                        {
+                            UserId = _userManager.GetUserAsync(User).Result.Id,
+                            ProductId = Model.Id
+                        });
+                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editmodal_@Model.Id">Редагувати</button>
+                    }
                 }
                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Закрити</button>
             </div>

@@ -29,14 +29,10 @@ namespace RentCourse.Data.Repository
 
         public IEnumerable<Product> GetProducts(string type, string category, string location, string sort, string? search, double? minprice, double? maxprice)
         {
-            IEnumerable<Product> products = null;
-            if (category == "Усі речі" || category == "Уся нерухомість" || category == "Увесь транспорт")
+            IEnumerable<Product> products = GetProductsByType(_context.Types.FirstOrDefault(x => x.Name == type).Id).Where(a=>a.Available==true);
+            if (category != "Усі речі" && category != "Уся нерухомість" && category != "Увесь транспорт")
             {
-                products = GetAvProducts;
-            }
-            else
-            {
-                products = GetAvProducts.Where(x => x.CategoryId == _context.Categories.FirstOrDefault(t => t.Name == category).Id);
+                products = products.Where(x => x.CategoryId == _context.Categories.FirstOrDefault(c => c.Name == category).Id);
             }
 
             if (location != "Уся Україна")
@@ -65,15 +61,15 @@ namespace RentCourse.Data.Repository
 
             if (sort == "new")
             {
-                products.OrderBy(x => x.DateOfPublication);
+                products = products.OrderByDescending(x => x.DateOfPublication);
             }
             else if (sort == "min")
             {
-                products.OrderBy(x => x.Price);
+                products = products.OrderBy(x => x.Price);
             }
             else if (sort == "max")
             {
-                products.OrderByDescending(x => x.Price);
+                products = products.OrderByDescending(x => x.Price);
             }
             
             return products;

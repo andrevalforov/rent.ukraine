@@ -69,7 +69,6 @@ namespace RentCourse.Controllers
 
             await Authenticate(model.Email);
             ActiveUser = dbUser;
-            //dbUser.UserProfile = _context.UserProfile.FirstOrDefault(x => x.Id == user.Id);
             return RedirectToAction("Index", "Home");
         }
 
@@ -162,7 +161,6 @@ namespace RentCourse.Controllers
 
         private async Task Authenticate(string userName)
         {
-            //ActiveUser = _context.Users.FirstOrDefault(x => x.UserName == userName);
             // создаем один claim
             var claims = new List<Claim>
             {

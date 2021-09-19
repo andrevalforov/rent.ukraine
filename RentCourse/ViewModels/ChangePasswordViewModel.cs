@@ -8,22 +8,22 @@ namespace RentCourse.ViewModels
 {
     public class ChangePasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Введіть старий пароль")]
         [DataType(DataType.Password)]
         [Display(Name = "Старий пароль")]
         public string OldPassword { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введіть новий пароль")]
         [DataType(DataType.Password)]
         [Display(Name = "Новий пароль")]
         [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,24}$",
         ErrorMessage = "Некоректний формат паролю")]
         public string NewPassword { get; set; }
         
-        [Required]
-        [Compare("Password", ErrorMessage = "Паролі не співпадають")]
+        [Required(ErrorMessage = "Підтвердьте новий пароль")]
+        [Compare("NewPassword", ErrorMessage = "Паролі не співпадають")]
         [DataType(DataType.Password)]
-        [Display(Name = "Підтвердіть пароль")]
+        [Display(Name = "Підтвердьте пароль")]
         public string NewPasswordConfirm { get; set; }
     }
 }

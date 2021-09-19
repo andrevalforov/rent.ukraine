@@ -17,11 +17,11 @@ namespace RentCourse.Data.Models
         public DateTime DateOfPublication { get; set; }
         public int ViewCount { get; set; }
         public int LocationId { get; set; }
-        public /*virtual*/ Location Location { get; set; }
+        public Location Location { get; set; }
         public int CategoryId { get; set; }
-        public /*virtual*/ Category Category { get; set; }
+        public Category Category { get; set; }
         public string UserId { get; set; }
-        public /*virtual*/ UserProfile User { get; set; }
+        public UserProfile User { get; set; }
         public ICollection<UserFavorites> UserFavorites { get; set; }
     }
 }

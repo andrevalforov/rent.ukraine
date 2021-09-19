@@ -61,3 +61,7 @@
 nav li::selection{
     filter:invert(1);
 }
+
+#Title-error, #Description-error, #Email-error, #Password-error, #LastName-error, #FirstName-error, #MiddleName-error, #PhoneNumber-error, #PasswordConfirm-error, #OldPassword-error, #NewPassword-error, #NewPasswordConfirm-error, #FName-error, #LName-error {
+    color: #ff0000 !important;
+}

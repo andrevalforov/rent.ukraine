@@ -53,7 +53,7 @@ namespace RentCourse.Controllers
             }
             else
             {
-                products = _products.GetAvProducts.Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(t => t.Name == type).Id);
+                products = _products.GetAvProducts.Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(t => t.Name == type).Id).OrderByDescending(a=>a.DateOfPublication);
             }
 
             var productObj = new ProductListViewModel
@@ -83,7 +83,7 @@ namespace RentCourse.Controllers
             }
             else
             {
-                products = _products.GetAvProducts.Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(t => t.Name == type).Id);
+                products = _products.GetAvProducts.Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(t => t.Name == type).Id).OrderByDescending(a => a.DateOfPublication);
             }
 
             var productObj = new ProductListViewModel
@@ -113,7 +113,7 @@ namespace RentCourse.Controllers
             }
             else
             {
-                products = _products.GetAvProducts.Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(t => t.Name == type).Id);
+                products = _products.GetAvProducts.Where(x => x.Category.TypeId == _type.Types.FirstOrDefault(t => t.Name == type).Id).OrderByDescending(a => a.DateOfPublication);
             }
 
             var productObj = new ProductListViewModel
@@ -253,6 +253,30 @@ namespace RentCourse.Controllers
                 var errors = ModelState.Values.SelectMany(v => v.Errors);
             }
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult MainSearch(IndexPageViewModel model)
+        {
+            if (model.Search.Length != 0)
+            {
+                if (model.TypeId == 1)
+                {
+                    return RedirectToAction("MainThings", "Product", new { search = model.Search, category = "Усі речі", location = "Уся Україна", minprice = 0, maxprice = 0, sort = "new" });
+                }
+                else if (model.TypeId == 2)
+                {
+                    return RedirectToAction("MainRealEstate", "Product", new { search = model.Search, category = "Уся нерухомість", location = "Уся Україна", minprice = 0, maxprice = 0, sort = "new" });
+                }
+                else
+                {
+                    return RedirectToAction("MainCars", "Product", new { search = model.Search, category = "Увесь транспорт", location = "Уся Україна", minprice = 0, maxprice = 0, sort = "new" });
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }

@@ -54,6 +54,16 @@
         text-transform:none;
         font-weight:300;
     }
+
+    .accbtn {
+        font-size: 1em;
+        font-family: sans-serif;
+        font-weight: 600;
+        line-height: 110%;
+        text-transform: uppercase;
+        color: #04049d;
+        margin-bottom: 1em;
+    }
 </style>
 <body style="background-image:url(https://pbs.twimg.com/media/EuxyjDgXIAEo4Ke?format=jpg&name=large)">
 
@@ -122,8 +132,7 @@
                                                         <span asp-validation-for="TgUsername" />
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
-                                                        <button type="button" class="btn btn-primary">Зберегти</button>
+                                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,6 +157,7 @@
                                 <input style="font-size:1em;font-family:sans-serif;font-weight:600;margin-top:1em !important;color:#04049d;border: 0.2em solid #04049d !important;border-radius: 0 !important;min-width:25%" type="submit" class="btn btn-outline-dark" value="ЗАРЕЄСТРУВАТИСЯ" />
                             </div>
                         </div>
+                        <a class="accbtn" asp-action="Login" asp-controller="Account">Вже зареєстровані?</a>
                     </div>
                 </td>
                 <td style="border-left:0.3em solid #04049d; display:flex;justify-content:center;padding:2em">

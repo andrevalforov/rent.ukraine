@@ -1,0 +1,11 @@
+﻿@model RentCourse.ViewModels.IndexPageViewModel
+
+<form method="post" asp-controller="Product" asp-action="MainSearch" style="display:flex;flex-direction:row;justify-content:stretch; align-items:center">
+    <div asp-validation-summary="ModelOnly"></div>
+    <input value="" id="search" asp-for="Search" style="margin-bottom: 1em; margin-top: 1em; margin-right:0 !important; width:60%; border-right-width:0 !important" class="form-control mr-sm-2" type="search" placeholder="Пошук" aria-label="Search">
+    <select id="typeselect" class="form-control" asp-for="TypeId" style="width:40%">
+        <option value="1">Прокат речей</option>
+        <option value="2">Оренда нерухомості</option>
+        <option value="3">Оренда транспорту</option>
+    </select>
+</form>

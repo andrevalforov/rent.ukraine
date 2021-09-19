@@ -15,7 +15,7 @@
 </head>
 <body>
     <label style="margin-top:4%; font-family: sans-serif; font-weight: 600; color: #2acdc1; font-size: 3em; line-height: 110%; letter-spacing: 2px; text-transform: uppercase;">Обрані товари</label>
-    <div class="row row-cols-1 row-cols-md-4">
+    <div class="row row-cols-1 row-cols-md-3">
         @foreach (RentCourse.Data.Models.Product p in Model.Products)
         {
             @await Html.PartialAsync("ProductCard", p)

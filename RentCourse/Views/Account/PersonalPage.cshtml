@@ -118,7 +118,7 @@
                         }
                         else
                         {
-                            <label class="data" style="color:#ff0000" data-toggle="tooltip" title="Email не підтверджено">@Model.UserProfile.Email</label>
+                            <label class="data" style="color:#04049d" data-toggle="tooltip" title="Email не підтверджено">@Model.UserProfile.Email</label>
                         }
                     </td>
                 </tr>
@@ -142,7 +142,7 @@
                         <label class="title">Дата реєстрації:</label>
                     </td>
                     <td>
-                        <label class="data">@Model.UserProfile.RegistrationDate.ToShortDateString()</label>
+                        <label class="data">@Model.UserProfile.RegistrationDate.ToString("dd-MM-yyyy")</label>
                     </td>
                 </tr>
                 <tr>
@@ -195,7 +195,7 @@
 
         @inject RentCourse.Data.EFContext.EFDbContext _context;
         <label class="title" style="font-size:3em;text-align:center;margin-top:1em;margin-bottom:1em">Мої оголошення</label>
-        <div class="row row-cols-1 row-cols-md-4">
+        <div class="row row-cols-1 row-cols-md-3">
             @foreach (RentCourse.Data.Models.Product p in _context.Products)
             {
                 if (p.UserId == Model.User.Id)

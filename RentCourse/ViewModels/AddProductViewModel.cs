@@ -19,11 +19,11 @@ namespace RentCourse.ViewModels
         [Display(Name = "Категорія")]
         public int CategotyId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введіть заголовок")]
         [Display(Name = "Заголовок")]
         public string Title { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введіть опис")]
         [Display(Name = "Опис")]
         public string Description { get; set; }
 

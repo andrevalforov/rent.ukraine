@@ -38,16 +38,35 @@
         font-size: 1.3em;
     }
 </style>
+
+<script>
+    function filtervalue(search, category, location, minprice, maxprice, sort) {
+        document.getElementById("filtersearch").value = search;
+        document.getElementById(category).checked = true;
+        document.getElementById(location).checked = true;
+        document.getElementById("minprice").value = minprice;
+        document.getElementById("maxprice").value = maxprice;
+        document.getElementById(sort).checked = true;
+    }
+
+    function isChecked(element, index, array) {
+        if (element.checked == true) {
+            return element;
+        }
+        else return false;
+    }
+</script>
+
 <nav id="sidebar" style="        width: 25%;
         padding: 2em;
         margin: 2em;">
     <div class="label" style="font-family:sans-serif; color:#2acdc1; font-size:3em; text-transform:uppercase; font-weight:600; text-align:center">Фільтри</div>
     <form>
-        <input name="search" value="" id="filterinput" style="margin-bottom: 1em; margin-top: 1em;" class="form-control mr-sm-2" type="search" placeholder="ПОШУК" aria-label="Search">
+        <input name="search" value="" id="filterinput" runat="server" style="margin-bottom: 1em; margin-top: 1em;" class="form-control mr-sm-2" type="search" placeholder="ПОШУК" aria-label="Search">
         <ul class="list-unstyled components mb-5">
             <li>
                 <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Категорія</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu1">
+                <ul class="collapse list-unstyled" id="pageSubmenu1" name="pageSubmenu1" runat="server">
                     @foreach (var category in Model.Categories)
                     {
                         if (ViewData["Title"].ToString() == "MainThings" && category.TypeId == 1)
@@ -106,7 +125,7 @@
             </li>
             <li>
                 <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Місцезнаходження</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu2">
+                <ul class="collapse list-unstyled" id="pageSubmenu2" name="pageSubmenu2" runat="server">
                     @foreach (var location in Model.Locations)
                     {
                         if (location.City == "Уся Україна")
@@ -128,7 +147,7 @@
             </li>
             <li>
                 <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Ціна</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu3">
+                <ul class="collapse list-unstyled" id="pageSubmenu3" runat="server">
                     <li style="display:flex;flex-direction:column">
                         <input name="minprice" value="" id="filterinput" class="form-control mr-sm-2" type="number" placeholder="Мінімальна ціна" aria-label="MinPrice" style="margin-bottom:0.5em" />
                         <input name="maxprice" value="" id="filterinput" class="form-control mr-sm-2" type="number" placeholder="Максимальна ціна" aria-label="MaxPrice" />
@@ -137,7 +156,7 @@
             </li>
             <li>
                 <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Сортувати за</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu4">
+                <ul class="collapse list-unstyled" id="pageSubmenu4" runat="server">
                     <li>
                         <input name="sort" type="radio" id="new" value="new" checked>
                         <label for="new">Найновіші</label><br>
@@ -151,12 +170,11 @@
                 </ul>
             </li>
             <li style="display:flex;justify-content:center">
-
-                <button type="submit" style="font-size:1em;font-family:sans-serif;font-weight:600;margin-top:1em !important;color:#04049d;border-color:#04049d;border-width:2px" id="addbtn" class="btn btn-outline-success">ШУКАТИ</button>
+                <button type="submit" style="font-size:1em;font-family:sans-serif;font-weight:600;margin-top:1em !important;color:#04049d;border: 0.2em solid #04049d !important;border-radius: 0 !important;" id="addbtn" class="btn btn-outline-success">ШУКАТИ</button>
             </li>
         </ul>
     </form>
-    <div class="mb-5">
+    @*<div class="mb-5">
         <div class="label" style="color:#04049d; text-transform:uppercase; font-size:1.3em; font-weight:600; text-align:center">Tag Cloud</div>
         <div class="tagcloud" style="text-align:center">
             <a href="#" class="tag-cloud-link">dish</a>
@@ -168,5 +186,5 @@
             <a href="#" class="tag-cloud-link">desserts</a>
             <a href="#" class="tag-cloud-link">drinks</a>
         </div>
-    </div>
+    </div>*@
 </nav>

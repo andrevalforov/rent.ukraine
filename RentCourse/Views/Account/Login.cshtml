@@ -31,10 +31,13 @@
         letter-spacing: 2px;
     }
 
-    input {
-        border-width: 2px !important;
-        border-color: #04049d !important;
+    .form-control {
+        border: 0.2em solid #04049d !important;
+        border-radius: 0 !important;
         color: #04049d !important;
+        font-size: 1em !important;
+        font-family: sans-serif !important;
+        height: 3em;
     }
 
     .btn-outline-dark:hover {
@@ -78,10 +81,10 @@
                                 <span asp-validation-for="Password" />
                             </div>
                             <div class="form-group" style="display:flex;justify-content:center">
-                                <input style="font-size:1em;font-family:sans-serif;font-weight:600;margin-top:1em !important;color:#04049d;border-color:#04049d;border-width:2px;min-width:25%" type="submit" value="УВІЙТИ" class="btn btn-outline-dark" />
+                                <input style="font-size:1em;font-family:sans-serif;font-weight:600;margin-top:1em !important;color:#04049d;border: 0.2em solid #04049d !important;border-radius: 0 !important;min-width:25%" type="submit" value="УВІЙТИ" class="btn btn-outline-dark" />
                             </div>
                         </div>
-                        <a class="accbtn" asp-action="RestorePassword" asp-controller="Account">Забули пароль?</a>
+                        @*<a class="accbtn" asp-action="RestorePassword" asp-controller="Account">Забули пароль?</a>*@
                         <a class="accbtn" asp-action="Register" asp-controller="Account">Немає облікового запису?</a>
                     </div>
                 </td>

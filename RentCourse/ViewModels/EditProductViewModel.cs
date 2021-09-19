@@ -12,11 +12,11 @@ namespace RentCourse.ViewModels
         public int ProductId { get; set; }
         public string UserId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введіть заголовок")]
         [Display(Name = "Заголовок")]
         public string Title { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введіть опис")]
         [Display(Name = "Опис")]
         public string Description { get; set; }
 
