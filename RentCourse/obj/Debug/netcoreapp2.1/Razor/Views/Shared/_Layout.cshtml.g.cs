@@ -90,12 +90,12 @@ using RentCourse.Models;
             WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n");
             EndContext();
             BeginContext(25, 453, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f3be547b38b747f7b0ee97a5404eab3a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6f6c204a198d40b9a5e17d7a42020cb1", async() => {
                 BeginContext(31, 114, true);
                 WriteLiteral("\r\n    <meta charset=\"utf-8\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    ");
                 EndContext();
                 BeginContext(145, 53, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "97fa4dcbbfdc426d9732da24ed61bd3a", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "ef06f68fbd974063a013183aa9e68808", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -139,7 +139,7 @@ using RentCourse.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(480, 7459, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e1e7a4d131ed4f59bb4b7973134b7226", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b1e4d671336b40e487e04bd3c59e6680", async() => {
                 BeginContext(506, 1174, true);
                 WriteLiteral(@"
     <style>
@@ -179,12 +179,12 @@ using RentCourse.Models;
                 WriteLiteral("ont-size:1.1em;height:8%; background-image:url(\'https://pbs.twimg.com/media/EuitFHYXIAIJm2_?format=jpg&name=large\'); background-size:cover\">\r\n        ");
                 EndContext();
                 BeginContext(1680, 180, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f605402f84d84efc9cfbee679944b7e4", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "27da4dec54364ae3997a5733870e37f5", async() => {
                     BeginContext(1757, 14, true);
                     WriteLiteral("\r\n            ");
                     EndContext();
                     BeginContext(1771, 75, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0662c5dafdc346bf998d90e27ff4cc30", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "d5a69478d7b345a6ad4586cb9f2bf7ec", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -232,7 +232,7 @@ using RentCourse.Models;
                     ");
                 EndContext();
                 BeginContext(2312, 347, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c160fd88476e4af7a99777758a451042", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "94caae5419cf4cceadb7fb4c1c1aa3fe", async() => {
                     BeginContext(2514, 141, true);
                     WriteLiteral("\r\n                        <div class=\"label\">\r\n                            Прокат речей\r\n                        </div>\r\n                    ");
                     EndContext();
@@ -273,7 +273,7 @@ using RentCourse.Models;
                 WriteLiteral("\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    ");
                 EndContext();
                 BeginContext(2743, 357, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6dbb26ffc95d4b45a336c50857eb6480", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a23b5af48a704739a5be3cf2542165b2", async() => {
                     BeginContext(2949, 147, true);
                     WriteLiteral("\r\n                        <div class=\"label\">\r\n                            Оренда нерухомості\r\n                        </div>\r\n                    ");
                     EndContext();
@@ -314,7 +314,7 @@ using RentCourse.Models;
                 WriteLiteral("\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    ");
                 EndContext();
                 BeginContext(3184, 224, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3eaff9d333724a73a1bd05646d74314b", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6efc7a9a43ee41f6ae554f7ffbb8621a", async() => {
                     BeginContext(3258, 146, true);
                     WriteLiteral("\r\n                        <div class=\"label\">\r\n                            Оренда транспорту\r\n                        </div>\r\n                    ");
                     EndContext();
@@ -385,7 +385,7 @@ using RentCourse.Models;
                 WriteLiteral("                        ");
                 EndContext();
                 BeginContext(4148, 87, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4c939f1c66a04871b77860a35cdaf6f2", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f44599415b35478886c49ac42dcdbb62", async() => {
                     BeginContext(4219, 12, true);
                     WriteLiteral("Моя сторінка");
                     EndContext();
@@ -410,7 +410,7 @@ using RentCourse.Models;
                 WriteLiteral("\r\n                        ");
                 EndContext();
                 BeginContext(4261, 88, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "187a63cbbfcf47fe934c7e3dce3612d2", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6fb7097701ca4b3c965fdb829b90d3da", async() => {
                     BeginContext(4330, 15, true);
                     WriteLiteral("Нове оголошення");
                     EndContext();
@@ -435,7 +435,7 @@ using RentCourse.Models;
                 WriteLiteral("\r\n                        ");
                 EndContext();
                 BeginContext(4375, 78, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "057aacb1beb64274b11de338c1a8f29e", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f39a8baf4f984f7d96db3f98603d5b07", async() => {
                     BeginContext(4443, 6, true);
                     WriteLiteral("Обране");
                     EndContext();
@@ -460,7 +460,7 @@ using RentCourse.Models;
                 WriteLiteral("\r\n                        ");
                 EndContext();
                 BeginContext(4479, 331, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "770f8e3d48624fbfb41ed0a1651fd1e7", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b98f57cdab0347c8ab3ebc8e8aa25bf8", async() => {
                     BeginContext(4544, 259, true);
                     WriteLiteral(@"
                             <input class=""nav-link"" type=""submit"" value=""Вихід"" style=""color:#2acdc1 !important;font-weight:600 !important; text-transform:uppercase !important; border:none !important; background:none !important"" />
@@ -500,7 +500,7 @@ using RentCourse.Models;
                 WriteLiteral("                        ");
                 EndContext();
                 BeginContext(4908, 94, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d4d3150bcebf4b79807be9edb133babc", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "44e6c3371be545ee86f73e64eb805707", async() => {
                     BeginContext(4994, 4, true);
                     WriteLiteral("Вхід");
                     EndContext();
@@ -526,7 +526,7 @@ using RentCourse.Models;
                 WriteLiteral("\r\n                        ");
                 EndContext();
                 BeginContext(5028, 103, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "15a8a3805ff2499f9d1ec5d85c5bede4", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c3ece0cc687b44dc90418153c3ee8199", async() => {
                     BeginContext(5117, 10, true);
                     WriteLiteral("Реєстрація");
                     EndContext();
@@ -652,7 +652,7 @@ using RentCourse.Models;
     ");
                 EndContext();
                 BeginContext(7814, 66, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "216c7bb2b6c14e88891aeafc00d321a8", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5fb881884d84144bb2b50c9dc69c7f0", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
